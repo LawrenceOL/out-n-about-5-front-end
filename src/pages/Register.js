@@ -10,12 +10,15 @@ const Register = () => {
     <label>Last name:</label>
     <input type="text" id="lname" name="lname" defaultValue="Doe"/>
     <label>Location:</label>
-    <input className="location-form-field" type="text" id="location" name="location" defaultValue="123 Main Street, Bacon, GA 12345"/>
+    <input className="longer-form-field" type="text" id="location" name="location" defaultValue="123 Main Street, Bacon, GA 12345"/>
     <label>Username</label>
     <input type="text" id="username" name="username" defaultValue="jdog"/>
-    <label>Last name:</label>
+    <label>Password:</label>
     <input type="password" id="password" name="password"/>
-    <input type="submit" value="Submit"/>
+    <label>Email:</label>
+    <input className="longer-form-field" type="email" id="email" name="email" defaultValue="schmidt@johnjacobs.com"/>
+    <br/>
+    <input className="submit-registration" type="submit" value="Submit"/>
   </form>
   )
 }

@@ -46,8 +46,19 @@ nav {
 input {
   text-align: center;
 }
-.location-form-field {
+.longer-form-field {
   width: 400px;
+}
+
+.register-form label {
+  padding: 10px;
+}
+.submit-registration {
+  padding: 7px 10px;
+  color: green;
+  font-weight: bold;
+  border: green solid 3px;
+  border-radius: 5px;
 }
 
 /* BEGIN CARD DESIGN */
@@ -71,7 +82,7 @@ input {
   background-image:linear-gradient(#12613c, #0a290d);
   border-radius: 30px;
   position: absolute;
-  top: 55%;
+  top: 65%;
   left: -5px;
   height: 65%;
   width: 108%;
@@ -84,7 +95,7 @@ input {
   border-radius: 20px;
   background-color: #fff;
   position: absolute;
-  bottom: 30%;
+  bottom: 20%;
   left: 30px;
   overflow:hidden;
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.7);
@@ -99,7 +110,7 @@ input {
   color: #fff;
   font-weight: 900;
   left: 150px;
-  bottom: 26%;
+  bottom: 18%;
 }
 
 .hero-btn {
