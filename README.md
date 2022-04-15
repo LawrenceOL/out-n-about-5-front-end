@@ -4,7 +4,7 @@
 
 ### By: Eric Lantz && Huan Zeng && Lawrence O'Regan-Lloyd
 
-<img src='/Users/ericlantz/ga_seir/unit3/project/out-n-about-5-front-end/src/assets/pexels-photo-1078850.jpeg' alt="map" width="400"/>
+<img src='https://images.pexels.com/photos/1078850/pexels-photo-1078850.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' alt="map" width="400"/>
 
 ### **_Links_**
 
