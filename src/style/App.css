@@ -77,12 +77,21 @@ input {
 .location-img {
   height: 100%;
 }
-
-.hero-description-bk {
+.location-title {
   background-image:linear-gradient(#12613c, #0a290d);
   border-radius: 30px;
   position: absolute;
-  top: 65%;
+  top: -10%;
+  left: -5px;
+  height: 23%;
+  width: 70%;
+  transform: skew(340deg, 350deg);
+}
+.location-description {
+  background-image:linear-gradient(#12613c, #0a290d);
+  border-radius: 30px;
+  position: absolute;
+  top: 75%;
   left: -5px;
   height: 65%;
   width: 108%;
@@ -93,16 +102,15 @@ input {
   height: 80px;
   width: 80px;
   border-radius: 20px;
-  background-color: #fff;
   position: absolute;
-  bottom: 20%;
-  left: 30px;
+  bottom: 10%;
+  left: 40px;
   overflow:hidden;
-  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.7);
+  transform: rotate(355deg);
 }
 
 .hero-logo img {
-  height: 100%;
+  width:100%
 }
 
 .hero-description {
