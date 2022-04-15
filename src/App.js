@@ -4,13 +4,13 @@ import { Route, Routes } from 'react-router'
 
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
-import Feed from './pages/Feed'
 import Home from './pages/Home'
 
 const App = () => {
 
   return (
     <div className="App">
+      <h1>Out and About 5</h1>
       <main>
         <Routes>
           <Route path="/" element={''} />
