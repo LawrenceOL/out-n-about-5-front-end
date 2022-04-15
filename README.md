@@ -9,6 +9,7 @@
 ### **_Links_**
 
 #### [Out n About 5: Back-end Repo](https://github.com/LawrenceOL/out-n-about-5-back-end) 
+#### [Planning Trello](https://trello.com/b/CnWK8EJM/out-n-about-5) 
 #### Deployment on Heroku coming soon
 ---
 
