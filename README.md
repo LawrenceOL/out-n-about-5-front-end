@@ -27,7 +27,6 @@
 - React
 - Node.js
 - PostgreSQL
-  - MongoDB Atlas
 - Express
 - Heroku
 - Git
