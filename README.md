@@ -4,7 +4,7 @@
 
 ### By: Eric Lantz && Huan Zeng && Lawrence O'Regan-Lloyd
 
-<img src="https://github.com/LawrenceOL/out-n-about-5-front-end/tree/main/assets/pexels-aksonsat-uanthoeng-1078850.jpg" alt="map" width="400"/>
+<img src="https://github.com/LawrenceOL/out-n-about-5-front-end/blob/main/assets/pexels-aksonsat-uanthoeng-1078850.jpg?raw=true" alt="map" width="400"/>
 
 ### **_Links_**
 
