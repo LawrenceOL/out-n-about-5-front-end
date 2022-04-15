@@ -6,6 +6,7 @@ import Nav from './components/Nav'
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
 import Home from './pages/Home'
+import Activities from './pages/Activities'
 
 const App = () => {
 
@@ -17,7 +18,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/activities" element={''} />
+          <Route path="/activities" element={<Activities/>} />
         </Routes>
       </main>
     </div>
