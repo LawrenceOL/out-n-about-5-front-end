@@ -20,7 +20,6 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
       <Link className='nav-link' to="/">Home</Link>
       <Link className='nav-link' to="/register">Register</Link>
       <Link className='nav-link' to="/signin">Sign In</Link>
-      <Link className='nav-link' to="/activities">Activities</Link>
     </nav>
     </header>
   )
