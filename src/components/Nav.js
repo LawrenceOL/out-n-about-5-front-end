@@ -17,8 +17,8 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
   const publicOptions = (
     <header className = "navBar">
     <nav>
+      <Link className='nav-link' to="/profile">Profile</Link>
       <Link className='nav-link' to="/">Home</Link>
-      <Link className='nav-link' to="/register">Register</Link>
       <Link className='nav-link' to="/signin">Sign In</Link>
     </nav>
     </header>
