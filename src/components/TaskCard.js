@@ -1,28 +1,17 @@
-const TaskCard = (props) => {
+const TaskCard = () => {
 
-  if (!props.show) {
-    return null
-  }
 return (
-<div className="first hero">
-  <img className="location-img" src="http://tile.loc.gov/image-services/iiif/service:pnp:highsm:38100:38110/full/pct:25/0/default.jpg" alt="location"/>
-  <div className="location-description"></div>
-  <div className="hero-logo">
-    <img src='https://i.imgur.com/CoSoBtE.png' alt=""/>
+<div className="card">
+  <img className='card-image' src='https://cdn.pixabay.com/photo/2017/05/09/03/46/alberta-2297204__340.jpg' alt="location"/>
+  <div className="card-container">
+    <h4 className='card-name'>Name</h4> 
+    <p className='card-des card-b'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+    <form>
+    <label for='checkin'>Check In:</label><input className='card-checkin card-b' type='checkbox' id='checkin' name='checkin' value='Checked In' />
+    </form>
+    <a className='map-link' href='htpps://google.com'>Link to Map</a>
   </div>
-  <div className="location-title">
-    <p>Description</p>
-  </div>
-  <div className="hero-description">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-  </div>
-  <div  className="task-date">
-    <p>20.02.2019</p>
-  </div>
-  <div className="hero-btn">
-   <Link to='/signin'></Link>
-  </div>
-</div> 
+</div>
 )
 }
 

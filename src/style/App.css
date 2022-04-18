@@ -55,7 +55,6 @@ body{
     color: #eee;
     background:transparent;
   }
-
   .signin-title {
     font-size: 50px;
   }
@@ -272,9 +271,51 @@ background-color: #1ca651;
 transform: scale(1.2);
 cursor: pointer;
 }
+.signout:hover {
+  background-color: rgb(201, 0, 0);
+}
 /* ------------------- */
 
 /* Profile Page */
 .profile-page {
   text-align: center;
+}
+
+/* Card */
+.card {
+  width: 200px;
+  height: 400px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 5px;
+  margin: 15px;
+}
+.card-b {
+  margin: 2px;
+  padding: 2px;
+}
+.card-image {
+   width: 100%;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+}
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+.card-name {
+  font-size: 20px;
+  margin: 5px;
+}
+.map-link {
+  padding: 10px 0px 0px 0px;
+}
+.card-checkin {
+  width: 15px;
+  height:15px; 
+}
+
+.card-des {
+  font-size: 14px;
+  padding: 0 10px 10px 10px;
 }

@@ -1,6 +1,10 @@
 import { GetProfile, UpdateProfile } from '../services/UserServices'
 import { useState, useEffect } from 'react'
 
+import { useParams } from 'react-router-dom'
+import TaskCard from '../components/TaskCard'
+
+
 const Profile = ({ user }) => {
   const [profile, setProfile] = useState({})
   const [userState, setUserState] = useState(user)
@@ -118,6 +122,8 @@ const Profile = ({ user }) => {
 
         <button onClick={enableUpdate}>{updateBtn}</button>
       </form>
+
+      {<TaskCard />}
     </div>
   )
 }
