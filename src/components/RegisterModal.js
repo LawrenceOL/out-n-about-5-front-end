@@ -50,7 +50,7 @@ return (
           <h1 className='modal-title'>Register</h1>
         </div>
         <div className='modal-body'>
-          <form>
+          <form onSubmit={handleSubmit}>
 {/* First Name */}
             <div className='form-item'>
             <input
@@ -119,12 +119,12 @@ return (
             </div>
 {/* Submit Button */}
       <div className='modal-footer'>
-        <a className='submit' href='/'>
+        <a className='submit'>
           <span></span>
           <span></span>
           <span></span>
           <span></span>
-          <input className='form-submit' type='submit' onSubmit={handleSubmit}/>
+          <input className='form-submit' type='submit' />
         </a>
         </div>
         </form>
