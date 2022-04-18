@@ -8,3 +8,11 @@ export const GetProfile = async (pk) => {
     throw error
   }
 }
+
+export const UpdateProfile = async (pk, data) => {
+  try {
+    const res = await Client.put(`/user/update/${pk}`, data)
+  } catch (error) {
+    throw error
+  }
+}
