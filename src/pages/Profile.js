@@ -94,7 +94,7 @@ const Profile = () => {
           value={profile.email}
           readOnly={formStatus}
         />
-        <label htmlFor="location">Location:</label>
+        <label htmlFor="location">Address:</label>
         <input
           onChange={handleChange}
           type="text"
