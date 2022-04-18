@@ -1,9 +1,8 @@
 import Client from './api'
 
-export const GetProfile = async () => {
+export const GetProfile = async (pk) => {
   try {
-    const res = await Client.get('/user/pk/:pk')
-    console.log(res)
+    const res = await Client.get(`/user/pk/${pk}`)
     return res.data
   } catch (error) {
     throw error
