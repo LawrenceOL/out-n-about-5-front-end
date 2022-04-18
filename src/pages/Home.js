@@ -6,6 +6,7 @@ import { letterSpacing } from "@mui/system";
 const Home = () => {
   //Game start search
   let coordinates = [];
+  let selectedLocations = [];
   const [locations, setLocations] = useState([]);
   const [locationsFound, setLocationsFound] = useState(false);
 
@@ -16,10 +17,14 @@ const Home = () => {
         out body;
         `
     );
-    console.log(response.data.elements);
+
     setLocations(response.data.elements);
     setLocationsFound(true);
   };
+
+  useEffect(() => {
+    chooseFive();
+  }, [locations]);
 
   function getLocation() {
     if (navigator.geolocation) {
@@ -32,8 +37,33 @@ const Home = () => {
 
   function showPosition(position) {
     coordinates = [position.coords.latitude, position.coords.longitude];
-    console.log(coordinates);
     getLocations();
+  }
+
+  // choose five or less if there are less than five results
+  function chooseFive() {
+    let locationsArray = [...locations];
+    // console.log(locations);
+    // console.log(locationsArray);
+
+    if (locationsArray.length === 0) {
+      locations[0] = "Sorry, no restaurants found in your area";
+    }
+
+    for (let i = 0; i < 5; i++)
+      if (locationsArray.length > 0) {
+        {
+          const randomIndex = Math.floor(Math.random() * locationsArray.length);
+          // console.log("Random index is: ", randomIndex);
+          // console.log("pushing: ", locationsArray[randomIndex]);
+          selectedLocations.push(locationsArray[randomIndex]);
+          locationsArray.splice(randomIndex, 1);
+        }
+      } else {
+        break;
+      }
+
+    console.log("selectedLocations after loop: ", selectedLocations);
   }
 
   let navigate = useNavigate();
@@ -48,9 +78,9 @@ const Home = () => {
       {locationsFound && (
         <div>
           <p>"We found activities: "</p>
-
-          {locations.map((locations) => (
-            <p>{locations.tags.name}</p>
+          {console.log("selected locations in jsx: ", selectedLocations)}
+          {selectedLocations.map((selectedLocations) => (
+            <p>{selectedLocations.tags.name}</p>
           ))}
         </div>
       )}
