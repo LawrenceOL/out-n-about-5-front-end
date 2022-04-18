@@ -1,26 +1,30 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { letterSpacing } from "@mui/system";
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { letterSpacing } from '@mui/system'
 
 const Home = () => {
   //Game start search
+
   let coordinates = [];
   let selectedLocations = [];
   const [locations, setLocations] = useState([]);
   const [locationsFound, setLocationsFound] = useState(false);
 
+
   const getLocations = async (e) => {
     const response = await axios.post(
       `https://overpass-api.de/api/interpreter?data=`,
-      `[out:json]; node(around:8000.00,${coordinates[0]}, ${coordinates[1]})["amenity"="restaurant"];
+      `[out:json];node(around:8000.00,${coordinates[0]}, ${coordinates[1]})["amenity"="restaurant"];
         out body;
         `
-    );
+
+ 
 
     setLocations(response.data.elements);
     setLocationsFound(true);
   };
+
 
   useEffect(() => {
     chooseFive();
@@ -28,14 +32,15 @@ const Home = () => {
 
   function getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
+      navigator.geolocation.getCurrentPosition(showPosition)
     } else {
-      alert("Geolocation is not supported by this browser.");
+      alert('Geolocation is not supported by this browser.')
     }
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(showPosition)
   }
 
   function showPosition(position) {
+
     coordinates = [position.coords.latitude, position.coords.longitude];
     getLocations();
   }
@@ -68,6 +73,7 @@ const Home = () => {
 
   let navigate = useNavigate();
 
+
   return (
     <div className="home-page">
       <h1>Out and About 5</h1>
@@ -77,15 +83,17 @@ const Home = () => {
 
       {locationsFound && (
         <div>
+
           <p>"We found activities: "</p>
           {console.log("selected locations in jsx: ", selectedLocations)}
           {selectedLocations.map((selectedLocations) => (
             <p>{selectedLocations.tags.name}</p>
           ))}
+
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

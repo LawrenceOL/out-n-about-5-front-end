@@ -26,45 +26,55 @@ const SignIn = (props) => {
 
   return (
     <div className="signin-page">
-      <div className='signin-wrapper'>
-        <form className='login-form' onSubmit={handleSubmit}>
-        <h1 className='signin-title'>Sign In</h1>
-{/* Username */}
-          <div className='form-item'>
+      <div className="signin-wrapper">
+        <form className="login-form" onSubmit={handleSubmit}>
+          <h1 className="signin-title">Sign In</h1>
+          {/* Username */}
+          <div className="form-item">
             <input
-            className='reg-box'
-            onChange={handleChange}
-            type='text'
-            id='username'
-            name='username'
-            value={formValuer.username}
-            placeholder='Username'
-            required/>
-            </div>
-{/* Password */}
-            <div className='form-item'>
-            <input 
-            className='reg-box'
-            onChange={handleChange}
-            type='password' 
-            id='passswordd'
-            name='password'
-            value={formValuer.password}
-            placeholder='Password'
-            required/>
-            </div>
-{/* Sign In Button */}
-            <div className='signin-button-border'>
-            <button disabled={!formValuer.username || !formValuer.password}>Sign In</button>
-            </div>
-        </form> 
-        </div>
-      <div className='register-button-wrapper'>
-{/* REGISTER BUTTON */}
-      <button className='open-modal' onClick={() => setShow(true)}>Register</button>
-      <RegisterModal setShow={setShow} show={show} onClose={() => setShow(false)}/>
+              className="reg-box"
+              onChange={handleChange}
+              type="text"
+              id="username"
+              name="username"
+              value={formValuer.username}
+              placeholder="Username"
+              required
+            />
+          </div>
+          {/* Password */}
+          <div className="form-item">
+            <input
+              className="reg-box"
+              onChange={handleChange}
+              type="password"
+              id="passswordd"
+              name="password"
+              value={formValuer.password}
+              placeholder="Password"
+              required
+            />
+          </div>
+          {/* Sign In Button */}
+          <div className="signin-button-border">
+            <button disabled={!formValuer.username || !formValuer.password}>
+              Sign In
+            </button>
+          </div>
+        </form>
+      </div>
+      <div className="register-button-wrapper">
+        {/* REGISTER BUTTON */}
+        <button className="open-modal" onClick={() => setShow(true)}>
+          Register
+        </button>
+        <RegisterModal
+          setShow={setShow}
+          show={show}
+          onClose={() => setShow(false)}
+        />
+      </div>
     </div>
-  </div>
   )
 }
 

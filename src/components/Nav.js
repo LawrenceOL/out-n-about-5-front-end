@@ -4,10 +4,14 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
   let authenticatedOptions
   if (user) {
     authenticatedOptions = (
-      <nav className = 'navBar'>
-        <Link className='nav-link' to="/profile/:id">Profile</Link>
-        <Link className='nav-link' to="/">Activities</Link>
-        <Link className='signout nav-link' onClick={handleLogOut} to="/">
+      <nav className="navBar">
+        <Link className="nav-link" to="/profile/">
+          Profile
+        </Link>
+        <Link className="nav-link" to="/">
+          Activities
+        </Link>
+        <Link className="signout nav-link" onClick={handleLogOut} to="/">
           Sign Out
         </Link>
       </nav>
@@ -15,17 +19,20 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
   }
 
   const publicOptions = (
-    <nav className = 'navBar'>
-      <Link className='nav-link' to="/">Home</Link>
-      <Link className='nav-link' to="/signin">Sign In</Link>
+    <nav className="navBar">
+      <Link className="nav-link" to="/">
+        Home
+      </Link>
+      <Link className="nav-link" to="/signin">
+        Sign In
+      </Link>
     </nav>
   )
 
   return (
     <header>
       <Link to="/">
-        <div className="logo-wrapper" alt="logo">
-        </div>
+        <div className="logo-wrapper" alt="logo"></div>
       </Link>
       {authenticated && user ? authenticatedOptions : publicOptions}
     </header>

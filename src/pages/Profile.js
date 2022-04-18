@@ -1,16 +1,22 @@
 import { GetProfile, UpdateProfile } from '../services/UserServices'
 import { useState, useEffect } from 'react'
+
 import { useParams } from 'react-router-dom'
 import TaskCard from '../components/TaskCard'
 
-const Profile = () => {
-  let { id } = useParams()
+
+const Profile = ({ user }) => {
   const [profile, setProfile] = useState({})
+  const [userState, setUserState] = useState(user)
   const [formStatus, setFormStatus] = useState(true)
   const [updateBtn, setUpdateBtn] = useState('Enable Update')
 
+  if (user) {
+    console.log(user)
+  }
+
   useEffect(() => {
-    getProfile(id)
+    getProfile(userState.id)
   }, [])
 
   const getProfile = async (id) => {
@@ -28,7 +34,7 @@ const Profile = () => {
 
     if (updateBtn === 'Update') {
       console.log(profile)
-      updateProfile(id, profile)
+      updateProfile(user.id, profile)
 
       setFormStatus(true)
       setUpdateBtn('Enable Update')
