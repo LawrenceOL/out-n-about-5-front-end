@@ -7,24 +7,35 @@ const SignIn = () => {
 
   return (
     <div className="signin-page">
-      <h1>Sign In</h1>
-      {/* <div className='login-wrapper'>
-        <form className='login-form'> */}
+      <div className='signin-wrapper'>
+        <form className='login-form'>
+        <h1 className='signin-title'>Sign In</h1>
 {/* Username */}
-          {/* <div className='form-item'>
-            <label><b>Username: </b><input className='reg-box' type='text' id='user_name' name='user_name'></input>
-            </label>
-            </div> */}
-{/* Password */}
-            {/* <div className='form-item'>
-            <label><b>Password: </b></label><input className='reg-box' type='password' id='pswd' name='pswd'></input>
+          <div className='form-item'>
+            <input 
+            className='reg-box' type='text'
+            id='user_name' name='user_name'
+            placeholder='Username'/>
             </div>
-        </form>
-      </div> */}
+{/* Password */}
+            <div className='form-item'>
+            <input 
+            className='reg-box' type='password' 
+            id='pswd'
+            name='pswd' placeholder='Password'/>
+            </div>
+{/* Sign In Button */}
+            <div className='signin-button-border'>
+            <input className='signin-button' type="submit" value="Sign In"/>
+            </div>
+        </form> 
+        </div>
+      <div className='register-button-wrapper'>
 {/* REGISTER BUTTON */}
       <button className='open-modal' onClick={() => setShow(true)}>Register</button>
       <RegisterModal setShow={setShow} show={show} onClose={() => setShow(false)}/>
     </div>
+  </div>
   )
 }
 

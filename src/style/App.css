@@ -2,24 +2,73 @@
   color: #1ca651;
 }
 body{
-  min-height: 100vh;
-  background: #eee;
+  background: rgb(235, 245, 237);
   background-size: contain;
+  font-family: 'Jost', sans-serif;
+  box-sizing: border-box;
 }
 /* SIGN UP PAGE */
 .signin-page {
+  color: white;
+  background-color: white;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  width: 1000px;
+  height: 600px;
+}
+.signin-wrapper {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.login-form {
+  background-image:linear-gradient(to bottom right, #25b542 20%, #1c93ff);
+  border-top-right-radius: 0px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.register-button-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
   align-items: center;
 }
+.signin-button {
+    font-size: 14px;
+    padding: .5rem 3rem;
+    border: solid 2.5px #eee;
+    background: transparent;
+    background-origin: border-box;    margin: 10px;
+    color:white;
+}
+  .signin-button:hover {
+    box-shadow: none;
+    color: #eee;
+    background:transparent;
+  }
 
+  .signin-title {
+    font-size: 50px;
+  }
+
+.signin-button:hover {
+  transform:translate(1px,1px);
+}
 /* REGISTRATION MODAL STYLING */
 .open-modal {
   background-image:linear-gradient(to bottom right, #25b542 20%, #1c93ff);
   padding: 10px 20px;
   font-size: 20px;
-  color:white;
+  color:eee;
   border: transparent;
   font-weight: bold;
   border-radius: 5px;
@@ -189,7 +238,7 @@ a span:nth-child(4) {
 .reg-box{
 	width: 70%;
 	height: 20px;
-	background: #e0dede;
+	background: #eee;
 	justify-content: center;
 	display: flex;
 	margin: 20px auto;
@@ -222,9 +271,6 @@ border-radius:5px;
 background-color: #1ca651;
 transform: scale(1.2);
 cursor: pointer;
-}
-.login-wrapper {
-  width: 400px;
 }
 /* ------------------- */
 

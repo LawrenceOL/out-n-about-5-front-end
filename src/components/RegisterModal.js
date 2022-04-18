@@ -1,10 +1,8 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
 import { RegisterUser } from '../services/Auth'
 
 const RegisterModal = (props) => {
 
-  let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({
     firstname: '',
@@ -40,7 +38,7 @@ const RegisterModal = (props) => {
     props.show=false;
 }
 
-//
+
 if (!props.show) {
   return null
 }
@@ -121,12 +119,12 @@ return (
             </div>
 {/* Submit Button */}
       <div className='modal-footer'>
-        <a className='submit'>
+        <a className='submit' href='/'>
           <span></span>
           <span></span>
           <span></span>
           <span></span>
-          <input className='form-submit' type='submit'onSubmit={handleSubmit}/>
+          <input className='form-submit' type='submit' onSubmit={handleSubmit}/>
         </a>
         </div>
         </form>
