@@ -37,11 +37,6 @@ const RegisterModal = (props) => {
     props.show = false
   }
 
-  const getUserId = async (pk) => {
-    const res = await axios.get(`http://localhost:3001/user/pk/${pk}`)
-    console.log(res.data)
-  }
-
   getUserId(1)
 
   if (!props.show) {
