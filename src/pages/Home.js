@@ -5,15 +5,17 @@ import { letterSpacing } from "@mui/system";
 
 const Home = () => {
   //Game start search
-  const [coordinates, setCoordinates] = useState([]);
+  let coordinates = [];
   const [restaurants, setRestaurants] = useState({});
 
   const getLocalRestaurants = async (e) => {
     const response = await axios.post(
-      `https://overpass-api.de/api/interpreter?data=node(around:${coordinates[0]}, ${coordinates[1]} )["amenity"="restaurant"];
-    out body`
+      `https://overpass-api.de/api/interpreter?data=`, 
+        `node(around:8000.00,${coordinates[0]}, ${coordinates[1]})["amenity"="restaurant"];
+        out body;
+        `    
     );
-    setRestaurants(response.data);
+    console.log(response.data)
   };
 
   function getLocation() {
@@ -26,12 +28,9 @@ const Home = () => {
   }
 
   function showPosition(position) {
-    setCoordinates([position.coords.latitude, position.coords.longitude]);
-    while (coordinates === []) {
-      if (coordinates !== []) {
-        getLocalRestaurants();
-      }
-    }
+    coordinates = [position.coords.latitude, position.coords.longitude];
+    console.log(coordinates);
+    getLocalRestaurants();
   }
 
   let navigate = useNavigate();
@@ -39,8 +38,7 @@ const Home = () => {
   return (
     <div className="home-page">
       <h1>Out and About 5</h1>
-      <button onClick={(e) => getLocation()}>Get Coordinates</button>
-      {/* <p>{restaurants}</p> */}
+      <button onClick={(e) => getLocation()}>Get Coordinates</button>      
     </div>
   );
 };
