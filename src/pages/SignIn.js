@@ -7,18 +7,18 @@ const SignIn = (props) => {
   const navigate = useNavigate
   const [show, setShow] = useState(false)
 
-  const [formValues, setFormValues] = useState({
+  const [formValuer, setFormValuer] = useState({
     username: '',
     password: ''
   })
 
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    setFormValuer({ ...formValuer, [e.target.name]: e.target.value })
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const payload = await SignInUser(formValues)
-    setFormValues({ username: '', password: '' })
+    const payload = await SignInUser(formValuer)
+    setFormValuer({ username: '', password: '' })
     props.setUser(payload)
     props.toggleAuthenticated(true)
     navigate('/')
@@ -37,7 +37,7 @@ const SignIn = (props) => {
             type='text'
             id='username'
             name='username'
-            value={formValues.username}
+            value={formValuer.username}
             placeholder='Username'
             required/>
             </div>
@@ -49,13 +49,13 @@ const SignIn = (props) => {
             type='password' 
             id='passswordd'
             name='password'
-            value={formValues.password}
+            value={formValuer.password}
             placeholder='Password'
             required/>
             </div>
 {/* Sign In Button */}
             <div className='signin-button-border'>
-            <button disabled={!formValues.username || !formValues.password}>Sign In</button>
+            <button disabled={!formValuer.username || !formValuer.password}>Sign In</button>
             </div>
         </form> 
         </div>
