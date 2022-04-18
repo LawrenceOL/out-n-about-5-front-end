@@ -9,17 +9,16 @@ const Home = () => {
   const [locations, setLocations] = useState([]);
   const [locationsFound, setLocationsFound] = useState(false);
 
-
   const getLocations = async (e) => {
     const response = await axios.post(
-      `https://overpass-api.de/api/interpreter?data=`, 
-        `[out:json]; node(around:8000.00,${coordinates[0]}, ${coordinates[1]})["amenity"="restaurant"];
+      `https://overpass-api.de/api/interpreter?data=`,
+      `[out:json]; node(around:8000.00,${coordinates[0]}, ${coordinates[1]})["amenity"="restaurant"];
         out body;
-        `    
-    )
+        `
+    );
     console.log(response.data.elements);
-    setLocations(response.data.elements)
-    setLocationsFound(true)
+    setLocations(response.data.elements);
+    setLocationsFound(true);
   };
 
   function getLocation() {
@@ -42,12 +41,19 @@ const Home = () => {
   return (
     <div className="home-page">
       <h1>Out and About 5</h1>
-      {!locationsFound && (<button onClick={(e) => getLocation()}>Start the Game!</button>   )}
-       
-      {locationsFound && (
-        <p>"We found activities: "</p>
+      {!locationsFound && (
+        <button onClick={(e) => getLocation()}>Start the Game!</button>
       )}
 
+      {locationsFound && (
+        <div>
+          <p>"We found activities: "</p>
+
+          {locations.map((locations) => (
+            <p>{locations.tags.name}</p>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
