@@ -37,8 +37,6 @@ const RegisterModal = (props) => {
     props.show = false
   }
 
-  getUserId(1)
-
   if (!props.show) {
     return null
   }
