@@ -6,16 +6,19 @@ import { letterSpacing } from "@mui/system";
 const Home = () => {
   //Game start search
   let coordinates = [];
-  const [restaurants, setRestaurants] = useState({});
+  const [locations, setLocations] = useState({});
+  const [locationsFound, setLocationsFound] = useState(false);
 
-  const getLocalRestaurants = async (e) => {
+
+  const getLocations = async (e) => {
     const response = await axios.post(
       `https://overpass-api.de/api/interpreter?data=`, 
         `node(around:8000.00,${coordinates[0]}, ${coordinates[1]})["amenity"="restaurant"];
         out body;
         `    
-    );
-    console.log(response.data)
+    )
+    setLocations(response.data)
+    setLocationsFound(true)
   };
 
   function getLocation() {
@@ -30,7 +33,7 @@ const Home = () => {
   function showPosition(position) {
     coordinates = [position.coords.latitude, position.coords.longitude];
     console.log(coordinates);
-    getLocalRestaurants();
+    getLocations();
   }
 
   let navigate = useNavigate();
@@ -38,7 +41,15 @@ const Home = () => {
   return (
     <div className="home-page">
       <h1>Out and About 5</h1>
-      <button onClick={(e) => getLocation()}>Get Coordinates</button>      
+      {!locationsFound && (<button onClick={(e) => getLocation()}>Start the Game!</button>   )}
+       
+      {locationsFound && (
+        <div>
+          <p>${locations}
+          </p>
+        </div>
+      )}
+
     </div>
   );
 };
