@@ -1,8 +1,6 @@
-import {useNavigate} from 'react-router-dom'
 import TaskCard from '../components/TaskCard'
 
 const Activities = () => {
-  let navigate = useNavigate()
 
   return (
     <div className="activities-page">
