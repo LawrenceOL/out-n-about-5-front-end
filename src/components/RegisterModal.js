@@ -37,7 +37,6 @@ const RegisterModal = (props) => {
     props.show = false
   }
 
-
   if (!props.show) {
     return null
   }
