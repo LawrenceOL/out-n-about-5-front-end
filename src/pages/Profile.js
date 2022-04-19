@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 const Profile = ({ user, profile, getProfile, setProfile }) => {
   const [formStatus, setFormStatus] = useState(true)
   const [updateBtn, setUpdateBtn] = useState('Enable Update')
+  const [updateClass, setUpdateClass] = useState('profile-input')
   const { id } = useParams()
   const updateProfile = async (id, data) => {
     await UpdateProfile(id, data)
@@ -21,18 +22,20 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
 
     if (updateBtn === 'Update') {
       updateProfile(id, profile)
-
+      setUpdateClass('profile-input')
       setFormStatus(true)
       setUpdateBtn('Enable Update')
     }
 
     if (formStatus) {
       setFormStatus(false)
+      setUpdateClass('profile-input-updating')
       setUpdateBtn('Update')
     } else {
       setFormStatus(true)
     }
   }
+
 
   const handleChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value })
@@ -41,19 +44,13 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
   console.log(profile)
   return (
     <div className="profile-page">
-      <h1>Profile Page</h1>
-
-      <form>
-        <label htmlFor="userName">User Name:</label>
-        <input
-          onChange={handleChange}
-          type="text"
-          id="userName"
-          name="username"
-          value={profile.username}
-          readOnly={formStatus}
-        />
-        <label htmlFor="password">Password:</label>
+      <div className='initial-box'>
+        <p className='initials'>{profile.firstName[0]}{profile.lastName[0]}
+        </p>
+      </div>
+      <h1>{profile.firstName} {profile.lastName}</h1>
+      <form className='profile-form'>
+        {/* <label htmlFor="password">Password:</label>
         <input
           onChange={handleChange}
           type="password"
@@ -61,27 +58,40 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
           name="password"
           value={profile.password}
           readOnly={formStatus}
-        />
-        <label htmlFor="firstName">First Name:</label>
+        /> */}
+        <label
+        className='profile-item' 
+        htmlFor="firstName">First Name:
         <input
+        className={updateClass}
           onChange={handleChange}
           id="firstName"
           type="text"
           name="firstName"
           value={profile.firstName}
           readOnly={formStatus}
+          maxlength="35"
         />
-        <label htmlFor="lastName">Last Name:</label>
+        </label>
+        <label 
+        className='profile-item'
+        htmlFor="lastName">Last Name:
         <input
+        className={updateClass}
           onChange={handleChange}
           type="text"
           id="lastName"
           name="lastName"
           value={profile.lastName}
           readOnly={formStatus}
+          maxlength="35"
         />
-        <label htmlFor="email">E-mail:</label>
-        <input
+        </label>
+        <label 
+        className='profile-item'
+        htmlFor="email">E-mail:
+        <input 
+        className={updateClass}
           onChange={handleChange}
           type="text"
           id="email"
@@ -89,16 +99,23 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
           value={profile.email}
           readOnly={formStatus}
         />
-        <label htmlFor="location">Address:</label>
-        <input
+        </label>
+        <label 
+        className='profile-item'
+        htmlFor="location">Address:
+        <textarea
+        className={updateClass}
           onChange={handleChange}
-          type="text"
+          type="text-area"
           id="location"
           name="location"
           value={profile.location}
           readOnly={formStatus}
         />
-        <label htmlFor="score">Score:</label>
+        </label>
+        {/* <label
+        className='profile-item'
+        htmlFor="score">Score:
         <input
           onChange={handleChange}
           type="number"
@@ -107,11 +124,9 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
           value={profile.score}
           readOnly={formStatus}
         />
-
-        <button onClick={enableUpdate}>{updateBtn}</button>
+        </label> */}
+        <button className='profile-button' onClick={enableUpdate}>{updateBtn}</button>
       </form>
-
-      {<TaskCard />}
     </div>
   )
 }
