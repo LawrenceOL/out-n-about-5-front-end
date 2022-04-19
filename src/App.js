@@ -7,10 +7,12 @@ import Nav from './components/Nav'
 import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import Home from './pages/Home'
+import { GetProfile } from './services/UserServices'
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
+  const [profile, setProfile] = useState({})
 
   const handleLogOut = () => {
     //Reset all auth related state and clear localStorage
@@ -25,6 +27,7 @@ const App = () => {
     const user = await CheckSession()
     console.log(user)
     setUser(user)
+    getProfile(user.id)
     toggleAuthenticated(true)
     console.log(authenticated)
   }
@@ -37,6 +40,11 @@ const App = () => {
       checkToken()
     }
   }, [])
+
+  const getProfile = async (id) => {
+    const res = await GetProfile(id)
+    setProfile(res)
+  }
 
   return (
     <div className="App">
@@ -64,7 +72,13 @@ const App = () => {
           {user && (
             <Route
               path="/profile"
-              element={<Profile user={user} authenticated={authenticated} />}
+              element={
+                <Profile
+                  user={user}
+                  profile={profile}
+                  authenticated={authenticated}
+                />
+              }
             />
           )}
         </Routes>
