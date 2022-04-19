@@ -21,6 +21,7 @@ const Home = ({ user, profile }) => {
   const [locationsFound, setLocationsFound] = useState(false)
   const [backendData, setBackendData] = useState({})
   const [activites, setActivities] = useState([])
+  const [userLocation, setUserLocation] = useState([])
 
   const getLocations = async (e) => {
     const response = await axios.post(
@@ -49,10 +50,12 @@ const Home = ({ user, profile }) => {
   }
 
   console.log(activites)
+  console.log(userLocation)
 
   const getAllActivities = async () => {
     const res = await GetAllActivities()
-    setActivities(res)
+    setActivities(res.taskInfo[0].user)
+    setUserLocation(res.actLocation[0].user_act)
   }
 
   function showPosition(position) {
