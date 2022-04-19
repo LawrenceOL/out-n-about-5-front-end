@@ -278,9 +278,78 @@ cursor: pointer;
 
 /* Profile Page */
 .profile-page {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  margin: 50px auto;
+  padding: 50px 0px;
+  background: white;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.initial-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(to bottom right, #25b542 20%, #1c93ff);
+  border-radius: 200px;
+  margin: auto auto;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.initials {
+  font-family: 'Jost', sans-serif;
+  color:white;
+  font-size: 50px;
+}
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
+.profile-item {
+  max-width:500px;
+  margin: 10px;
+  overflow:visible;
+  
+}
+.profile-input {
+  font-family: 'Jost', sans-serif;
+  margin: auto 0px;
+  background-color: transparent;
+  border: none;
+  font-size:18px;
+  font-weight: bold;
+  text-align: center;
+}
+.profile-input-updating {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px 0px 0px 10px;
+  width:400px
+}
 
+.profile-button {
+  font-family: 'Jost', sans-serif;
+  background: linear-gradient(to bottom right, #25b542 20%, #1c93ff);
+  border-radius: 8px;
+  border: none;
+  padding: 5px 20px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  height: 40px;
+}
+.profile-button:hover {
+  transform: translate(1px, 1px);
+}
 /* Card */
 .card {
   width: 200px;
