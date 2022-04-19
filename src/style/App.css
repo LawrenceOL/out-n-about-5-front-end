@@ -338,6 +338,7 @@ cursor: pointer;
 .profile-input {
   font-family: 'Jost', sans-serif;
   margin: auto;
+  width:400px;
   background-color: transparent;
   border: none;
   font-size:18px;
