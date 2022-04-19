@@ -19,7 +19,7 @@ export const UpdateProfile = async (pk, data) => {
 
 export const sendDataToBackEnd = async (data) => {
   try {
-    const res = await Client.post(`location/data`, data)
+    const res = await Client.post(`/location/data`, data)
   } catch (error) {
     throw error
   }
@@ -27,7 +27,17 @@ export const sendDataToBackEnd = async (data) => {
 
 export const CreateLocation = async (data) => {
   try {
-    const res = await Client.post(`location/create`, data)
+    const res = await Client.post(`/location/create`, data)
+  } catch (error) {
+    throw error
+  }
+}
+
+export const GetAllActivities = async () => {
+  try {
+    const res = await Client.get('/user/activities')
+    console.log(res)
+    return res.data
   } catch (error) {
     throw error
   }

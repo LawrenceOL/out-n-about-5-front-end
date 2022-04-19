@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { letterSpacing } from '@mui/system'
-import { CreateLocation, sendDataToBackEnd } from '../services/UserServices'
+import {
+  CreateLocation,
+  sendDataToBackEnd,
+  GetAllActivities
+} from '../services/UserServices'
 import TaskCard from '../components/TaskCard'
 
 const Home = ({ user, profile }) => {
@@ -33,6 +37,7 @@ const Home = ({ user, profile }) => {
 
   useEffect(() => {
     setFiveLocations(chooseFive())
+    getAllActivities()
   }, [locations])
 
   function getLocation() {
@@ -41,6 +46,13 @@ const Home = ({ user, profile }) => {
     } else {
       alert('Geolocation is not supported by this browser.')
     }
+  }
+
+  console.log(activites)
+
+  const getAllActivities = async () => {
+    const res = await GetAllActivities()
+    setActivities(res)
   }
 
   function showPosition(position) {
@@ -123,9 +135,11 @@ const Home = ({ user, profile }) => {
             ))}
         </div>
       )}
-      <div>
-        <TaskCard />
-      </div>
+      {/* <div>
+        {activites.map((act) => (
+          <div>{act.userId === user.id && <TaskCard />}</div>
+        ))}
+      </div> */}
     </div>
   )
 }

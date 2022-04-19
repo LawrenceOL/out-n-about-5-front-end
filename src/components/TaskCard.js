@@ -1,4 +1,4 @@
-const TaskCard = () => {
+const TaskCard = (props) => {
   return (
     <div className="card">
       <img
@@ -7,7 +7,7 @@ const TaskCard = () => {
         alt="location"
       />
       <div className="card-container">
-        <h4 className="card-name">Name</h4>
+        <h4 className="card-name">name</h4>
         <p className="card-des card-b">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
