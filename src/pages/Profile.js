@@ -13,7 +13,7 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
     await UpdateProfile(id, data)
     getProfile(id)
   }
-  console.log(user)
+
   useEffect(() => {
     getProfile(id)
   }, [])
@@ -39,91 +39,97 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
     }
   }
 
-
   const handleChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value })
   }
-  
+
   return (
     <div className="profile-page">
-      <div className='initial-box'>
-        <p className='initials'>{profile.firstName[0]}{profile.lastName[0]}
+      <div className="initial-box">
+        <p className="initials">
+          {profile.firstName[0]}
+          {profile.lastName[0]}
         </p>
       </div>
-      <h1>{profile.firstName} {profile.lastName}</h1>
-      <form className='profile-form'>
-        <label
-        className='profile-item' 
-        htmlFor="firstName">First Name
-        <br/>
+      <h1>
+        {profile.firstName} {profile.lastName}
+      </h1>
+      <form className="profile-form">
+        {/* <label htmlFor="password">Password:</label>
         <input
-        className={updateClass}
           onChange={handleChange}
-          id="firstName"
-          type="text"
-          name="firstName"
-          value={profile.firstName}
+          type="password"
+          id="password"
+          name="password"
+          value={profile.password}
           readOnly={formStatus}
-          maxlength="35"
-        />
+        /> */}
+        <label className="profile-item" htmlFor="firstName">
+          First Name:
+          <input
+            className={updateClass}
+            onChange={handleChange}
+            id="firstName"
+            type="text"
+            name="firstName"
+            value={profile.firstName}
+            readOnly={formStatus}
+            maxlength="35"
+          />
         </label>
-        <label 
-        className='profile-item hiding'
-        htmlFor="lastName">Last Name
-        <br/>
-        <input
-        className={updateClass}
-          onChange={handleChange}
-          type="text"
-          id="lastName"
-          name="lastName"
-          value={profile.lastName}
-          readOnly={formStatus}
-          maxlength="35"
-        />
+        <label className="profile-item" htmlFor="lastName">
+          Last Name:
+          <input
+            className={updateClass}
+            onChange={handleChange}
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={profile.lastName}
+            readOnly={formStatus}
+            maxlength="35"
+          />
         </label>
-        <label 
-        className='profile-item'
-        htmlFor="email">E-mail
-        <br/>
-        <input 
-        className={updateClass}
-          onChange={handleChange}
-          type="text"
-          id="email"
-          name="email"
-          value={profile.email}
-          readOnly={formStatus}
-        />
+        <label className="profile-item" htmlFor="email">
+          E-mail:
+          <input
+            className={updateClass}
+            onChange={handleChange}
+            type="text"
+            id="email"
+            name="email"
+            value={profile.email}
+            readOnly={formStatus}
+          />
         </label>
-        <label 
-        className='profile-item'
-        htmlFor="location">Address
-        <br/>
-        <textarea
-        className={updateAddress}
-          onChange={handleChange}
-          id="location"
-          name="location"
-          value={profile.location}
-          readOnly={formStatus}
-        />
+        <label className="profile-item" htmlFor="location">
+          Address:
+          <input
+            className={updateClass}
+            onChange={handleChange}
+            type="text-area"
+            id="location"
+            name="location"
+            value={profile.location}
+            readOnly={formStatus}
+          />
         </label>
-       <label
-        className='profile-item'
-        htmlFor="score">Score
-        <br/>
-        <input
-        className={updateClass}
-          onChange={handleChange}
-          type="text"
-          id="score"
-          name="score"
-          value={profile.score}
-          readOnly={formStatus}
-        />
+        <label className="profile-item" htmlFor="score">
+          Score
+          <br />
+          <input
+            className={updateClass}
+            onChange={handleChange}
+            type="text"
+            id="score"
+            name="score"
+            value={profile.score}
+            readOnly={formStatus}
+          />
         </label>
-        <button className='profile-button' onClick={enableUpdate}>{updateBtn}</button>
+        <button className="profile-button" onClick={enableUpdate}>
+          {updateBtn}
+        </button>
       </form>
     </div>
   )

@@ -2,20 +2,26 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { letterSpacing } from '@mui/system'
+import { CreateLocation, sendDataToBackEnd } from '../services/UserServices'
+import TaskCard from '../components/TaskCard'
 
-const Home = () => {
+const Home = ({ user, profile }) => {
   //Game start search
 
   let coordinates = []
   let selectedLocations = []
+  let categoryKey = 'leisure'
+  let categoryValue = 'park'
   const [locations, setLocations] = useState([])
   const [fiveLocations, setFiveLocations] = useState([])
   const [locationsFound, setLocationsFound] = useState(false)
+  const [backendData, setBackendData] = useState({})
+  const [activites, setActivities] = useState([])
 
   const getLocations = async (e) => {
     const response = await axios.post(
       `https://overpass-api.de/api/interpreter?data=`,
-      `[out:json];node(around:8000.00,${coordinates[0]}, ${coordinates[1]})["amenity"="restaurant"];
+      `[out:json];node(around:8000.00,${coordinates[0]}, ${coordinates[1]})[${categoryKey}=${categoryValue}];
         out body;
         `
     )
@@ -68,10 +74,37 @@ const Home = () => {
 
       console.log('selectedLocations after loop: ', selectedLocations)
     }
+    if (selectedLocations.length > 1) {
+      convertToBackend(selectedLocations)
+    }
     return selectedLocations
   }
 
+  const sendTobackEnd = async (data) => {
+    const res = await CreateLocation(data)
+  }
+
+  let arrData = []
+  const convertToBackend = (apiData) => {
+    let data = {}
+    arrData = apiData.map((location) => {
+      data = {
+        location: {
+          name: location.tags.name,
+          url: `www.openstreetmap.org/node/${location.id}`,
+          gps: { lat: location.lat, lon: location.lon },
+          category: categoryKey
+        },
+        userId: user.id
+      }
+      sendTobackEnd(data)
+      arrData.push(data)
+    })
+  }
+  console.log(arrData)
   let navigate = useNavigate()
+
+  console.log(profile)
 
   return (
     <div className="home-page">
@@ -90,6 +123,9 @@ const Home = () => {
             ))}
         </div>
       )}
+      <div>
+        <TaskCard />
+      </div>
     </div>
   )
 }

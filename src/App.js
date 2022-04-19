@@ -66,7 +66,13 @@ const App = () => {
 
           <Route
             path="/"
-            element={<Home user={user} authenticated={authenticated} />}
+            element={
+              <Home
+                user={user}
+                profile={profile}
+                authenticated={authenticated}
+              />
+            }
           />
 
           <Route
