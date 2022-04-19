@@ -9,7 +9,7 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
   const { id } = useParams()
   const updateProfile = async (id, data) => {
     await UpdateProfile(id, data)
-    getProfile(user.id)
+    getProfile(id)
   }
   console.log(user)
   useEffect(() => {
@@ -20,7 +20,7 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
     e.preventDefault()
 
     if (updateBtn === 'Update') {
-      updateProfile(user.id, profile)
+      updateProfile(id, profile)
 
       setFormStatus(true)
       setUpdateBtn('Enable Update')
