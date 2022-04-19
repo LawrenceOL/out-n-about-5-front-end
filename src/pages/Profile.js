@@ -13,7 +13,7 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
     await UpdateProfile(id, data)
     getProfile(id)
   }
-
+  console.log(user)
   useEffect(() => {
     getProfile(id)
   }, [])
@@ -55,17 +55,9 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
         {profile.firstName} {profile.lastName}
       </h1>
       <form className="profile-form">
-        {/* <label htmlFor="password">Password:</label>
-        <input
-          onChange={handleChange}
-          type="password"
-          id="password"
-          name="password"
-          value={profile.password}
-          readOnly={formStatus}
-        /> */}
         <label className="profile-item" htmlFor="firstName">
-          First Name:
+          First Name
+          <br />
           <input
             className={updateClass}
             onChange={handleChange}
@@ -77,8 +69,9 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
             maxlength="35"
           />
         </label>
-        <label className="profile-item" htmlFor="lastName">
-          Last Name:
+        <label className="profile-item hiding" htmlFor="lastName">
+          Last Name
+          <br />
           <input
             className={updateClass}
             onChange={handleChange}
@@ -91,7 +84,8 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
           />
         </label>
         <label className="profile-item" htmlFor="email">
-          E-mail:
+          E-mail
+          <br />
           <input
             className={updateClass}
             onChange={handleChange}
@@ -103,11 +97,11 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
           />
         </label>
         <label className="profile-item" htmlFor="location">
-          Address:
-          <input
-            className={updateClass}
+          Address
+          <br />
+          <textarea
+            className={updateAddress}
             onChange={handleChange}
-            type="text-area"
             id="location"
             name="location"
             value={profile.location}
