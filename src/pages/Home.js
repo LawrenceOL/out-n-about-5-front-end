@@ -9,6 +9,7 @@ const Home = () => {
   let coordinates = []
   let selectedLocations = []
   const [locations, setLocations] = useState([])
+  const [fiveLocations, setFiveLocations] = useState([])
   const [locationsFound, setLocationsFound] = useState(false)
 
   const getLocations = async (e) => {
@@ -20,11 +21,12 @@ const Home = () => {
     )
 
     setLocations(response.data.elements)
+    console.log(locations)
     setLocationsFound(true)
   }
 
   useEffect(() => {
-    chooseFive()
+    setFiveLocations(chooseFive())
   }, [locations])
 
   function getLocation() {
@@ -33,7 +35,6 @@ const Home = () => {
     } else {
       alert('Geolocation is not supported by this browser.')
     }
-    navigator.geolocation.getCurrentPosition(showPosition)
   }
 
   function showPosition(position) {
@@ -51,20 +52,23 @@ const Home = () => {
       locations[0] = 'Sorry, no restaurants found in your area'
     }
 
-    for (let i = 0; i < 5; i++)
+    for (let i = 0; i < 5; i++) {
       if (locationsArray.length > 0) {
         {
           const randomIndex = Math.floor(Math.random() * locationsArray.length)
           // console.log("Random index is: ", randomIndex);
           // console.log("pushing: ", locationsArray[randomIndex]);
           selectedLocations.push(locationsArray[randomIndex])
+
           locationsArray.splice(randomIndex, 1)
         }
       } else {
         break
       }
 
-    console.log('selectedLocations after loop: ', selectedLocations)
+      console.log('selectedLocations after loop: ', selectedLocations)
+    }
+    return selectedLocations
   }
 
   let navigate = useNavigate()
@@ -79,10 +83,11 @@ const Home = () => {
       {locationsFound && (
         <div>
           <p>"We found activities: "</p>
-          {console.log('selected locations in jsx: ', selectedLocations)}
-          {selectedLocations.map((selectedLocations) => (
-            <p>{selectedLocations.tags.name}</p>
-          ))}
+
+          {fiveLocations.length > 1 &&
+            fiveLocations.map((selectedLocations) => (
+              <p key={selectedLocations.id}>{selectedLocations.tags.name}</p>
+            ))}
         </div>
       )}
     </div>
