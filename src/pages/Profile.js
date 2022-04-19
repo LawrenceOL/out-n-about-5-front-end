@@ -7,6 +7,7 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
   const [formStatus, setFormStatus] = useState(true)
   const [updateBtn, setUpdateBtn] = useState('Enable Update')
   const [updateClass, setUpdateClass] = useState('profile-input')
+  const [updateAddress, setUpdateAddress] = useState('profile-address')
   const { id } = useParams()
   const updateProfile = async (id, data) => {
     await UpdateProfile(id, data)
@@ -23,6 +24,7 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
     if (updateBtn === 'Update') {
       updateProfile(id, profile)
       setUpdateClass('profile-input')
+      setUpdateAddress('profile-address')
       setFormStatus(true)
       setUpdateBtn('Enable Update')
     }
@@ -30,6 +32,7 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
     if (formStatus) {
       setFormStatus(false)
       setUpdateClass('profile-input-updating')
+      setUpdateAddress('profile-address-updating')
       setUpdateBtn('Update')
     } else {
       setFormStatus(true)
@@ -40,8 +43,7 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
   const handleChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value })
   }
-
-  console.log(profile)
+  
   return (
     <div className="profile-page">
       <div className='initial-box'>
@@ -50,18 +52,10 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
       </div>
       <h1>{profile.firstName} {profile.lastName}</h1>
       <form className='profile-form'>
-        {/* <label htmlFor="password">Password:</label>
-        <input
-          onChange={handleChange}
-          type="password"
-          id="password"
-          name="password"
-          value={profile.password}
-          readOnly={formStatus}
-        /> */}
         <label
         className='profile-item' 
-        htmlFor="firstName">First Name:
+        htmlFor="firstName">First Name
+        <br/>
         <input
         className={updateClass}
           onChange={handleChange}
@@ -74,8 +68,9 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
         />
         </label>
         <label 
-        className='profile-item'
-        htmlFor="lastName">Last Name:
+        className='profile-item hiding'
+        htmlFor="lastName">Last Name
+        <br/>
         <input
         className={updateClass}
           onChange={handleChange}
@@ -89,7 +84,8 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
         </label>
         <label 
         className='profile-item'
-        htmlFor="email">E-mail:
+        htmlFor="email">E-mail
+        <br/>
         <input 
         className={updateClass}
           onChange={handleChange}
@@ -102,29 +98,31 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
         </label>
         <label 
         className='profile-item'
-        htmlFor="location">Address:
+        htmlFor="location">Address
+        <br/>
         <textarea
-        className={updateClass}
+        className={updateAddress}
           onChange={handleChange}
-          type="text-area"
           id="location"
           name="location"
           value={profile.location}
           readOnly={formStatus}
         />
         </label>
-        {/* <label
+       <label
         className='profile-item'
-        htmlFor="score">Score:
+        htmlFor="score">Score
+        <br/>
         <input
+        className={updateClass}
           onChange={handleChange}
-          type="number"
+          type="text"
           id="score"
           name="score"
           value={profile.score}
           readOnly={formStatus}
         />
-        </label> */}
+        </label>
         <button className='profile-button' onClick={enableUpdate}>{updateBtn}</button>
       </form>
     </div>
