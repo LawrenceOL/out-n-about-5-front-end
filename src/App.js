@@ -25,11 +25,10 @@ const App = () => {
     console.log('check token is called')
     //If a token exists, sends token to localStorage to persist logged in user
     const user = await CheckSession()
-    console.log(user)
+
     setUser(user)
     getProfile(user.id)
     toggleAuthenticated(true)
-    console.log(authenticated)
   }
 
   useEffect(() => {
@@ -69,18 +68,19 @@ const App = () => {
             path="/"
             element={<Home user={user} authenticated={authenticated} />}
           />
-          {user && (
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  user={user}
-                  profile={profile}
-                  authenticated={authenticated}
-                />
-              }
-            />
-          )}
+
+          <Route
+            path="/profile/:id"
+            element={
+              <Profile
+                user={user}
+                profile={profile}
+                getProfile={getProfile}
+                setProfile={setProfile}
+                authenticated={authenticated}
+              />
+            }
+          />
         </Routes>
       </main>
     </div>

@@ -4,7 +4,7 @@ import RegisterModal from '../components/RegisterModal'
 import { SignInUser } from '../services/Auth'
 
 const SignIn = (props) => {
-  const navigate = useNavigate
+  const navigate = useNavigate()
   const [show, setShow] = useState(false)
 
   const [formValuer, setFormValuer] = useState({
@@ -21,7 +21,8 @@ const SignIn = (props) => {
     setFormValuer({ username: '', password: '' })
     props.setUser(payload)
     props.toggleAuthenticated(true)
-    navigate('/')
+    console.log(payload)
+    navigate(`/profile/${payload.user.id}`)
   }
 
   return (
