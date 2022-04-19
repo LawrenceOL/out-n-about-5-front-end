@@ -1,26 +1,26 @@
 import { GetProfile, UpdateProfile } from '../services/UserServices'
-import { useState, useEffect } from 'react'
-
-import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import TaskCard from '../components/TaskCard'
+import { useParams } from 'react-router-dom'
 
-const Profile = ({ user, profile }) => {
-  // const [profile, setProfile] = useState({})
-  const [userState, setUserState] = useState(user)
+const Profile = ({ user, profile, getProfile, setProfile }) => {
   const [formStatus, setFormStatus] = useState(true)
   const [updateBtn, setUpdateBtn] = useState('Enable Update')
-
-  // const updateProfile = async (id, data) => {
-  //   const res = await UpdateProfile(id, data)
-  //   getProfile(id)
-  // }
+  const { id } = useParams()
+  const updateProfile = async (id, data) => {
+    await UpdateProfile(id, data)
+    getProfile(user.id)
+  }
+  console.log(user)
+  useEffect(() => {
+    getProfile(id)
+  }, [])
 
   const enableUpdate = (e) => {
     e.preventDefault()
 
     if (updateBtn === 'Update') {
-      console.log(profile)
-      // updateProfile(user.id, profile)
+      updateProfile(user.id, profile)
 
       setFormStatus(true)
       setUpdateBtn('Enable Update')
@@ -35,12 +35,14 @@ const Profile = ({ user, profile }) => {
   }
 
   const handleChange = (e) => {
-    // setProfile({ ...profile, [e.target.name]: e.target.value })
+    setProfile({ ...profile, [e.target.name]: e.target.value })
   }
 
+  console.log(profile)
   return (
     <div className="profile-page">
       <h1>Profile Page</h1>
+
       <form>
         <label htmlFor="userName">User Name:</label>
         <input
@@ -99,7 +101,7 @@ const Profile = ({ user, profile }) => {
         <label htmlFor="score">Score:</label>
         <input
           onChange={handleChange}
-          type="text"
+          type="number"
           id="score"
           name="score"
           value={profile.score}

@@ -5,7 +5,7 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
   if (user) {
     authenticatedOptions = (
       <nav className="navBar">
-        <Link className="nav-link" to="/profile/">
+        <Link className="nav-link" to={`/profile/${user.id}`}>
           Profile
         </Link>
         <Link className="nav-link" to="/">
