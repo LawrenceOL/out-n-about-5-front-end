@@ -262,9 +262,10 @@ padding: 10px 16px;
 text-decoration: none;
 font-weight: bold;
 font-size: 17px;
-width: 100px;
+width: 80px;
 text-align: center;
 border-radius:5px;
+margin:0px 10px;
 }
 .nav-link:hover {
 background-color: #1ca651;
@@ -314,13 +315,13 @@ cursor: pointer;
   text-align: center;
 }
 .profile-item {
-  max-width:500px;
-  margin: 10px;
-  overflow:visible;
-  
+  width: 400px;
+  margin: 8px 0px 8px 0px;
 }
-.profile-input {
+.profile-address {
   font-family: 'Jost', sans-serif;
+  resize: none;
+  width: 400px;
   margin: auto 0px;
   background-color: transparent;
   border: none;
@@ -328,10 +329,28 @@ cursor: pointer;
   font-weight: bold;
   text-align: center;
 }
+.profile-address-updating {
+  width: 400px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px 0px 0px 10px;
+  resize: none;
+}
+.profile-input {
+  font-family: 'Jost', sans-serif;
+  margin: auto;
+  background-color: transparent;
+  border: none;
+  font-size:18px;
+  font-weight: bold;
+  text-align: center;
+  
+}
 .profile-input-updating {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0px 0px 0px 10px;
-  width:400px
+  width:400px;
+  background: white;
+  border: 1px solid black;
 }
 
 .profile-button {
