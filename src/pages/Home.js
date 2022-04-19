@@ -108,7 +108,7 @@ const Home = ({ user, profile }) => {
           name: location.tags.name,
           url: `www.openstreetmap.org/node/${location.id}`,
           gps: { lat: location.lat, lon: location.lon },
-          category: categoryKey
+          category: `${categoryKey}` + ': ' + `${categoryValue}`
         },
         userId: user.id
       }
@@ -138,11 +138,15 @@ const Home = ({ user, profile }) => {
             ))}
         </div>
       )}
-      {/* <div>
-        {activites.map((act) => (
-          <div>{act.userId === user.id && <TaskCard />}</div>
+      <div>
+        {userLocation.map((act) => (
+          <div>
+            {act.Activity.userId === user.id && (
+              <TaskCard name={act.name} category={act.category} url={act.url} />
+            )}
+          </div>
         ))}
-      </div> */}
+      </div>
     </div>
   )
 }
