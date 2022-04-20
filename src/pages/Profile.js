@@ -67,7 +67,7 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
             name="firstName"
             value={profile.firstName}
             readOnly={formStatus}
-            maxlength="35"
+            maxLength="35"
           />
         </label>
         <label className="profile-item hiding" htmlFor="lastName">

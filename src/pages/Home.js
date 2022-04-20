@@ -5,7 +5,10 @@ import { letterSpacing } from '@mui/system'
 import {
   CreateLocation,
   sendDataToBackEnd,
-  getUserTaskLocation
+  getUserTaskLocation,
+  pushToActivity,
+  GetProfile,
+  GetUserTaskActivity
 } from '../services/UserServices'
 import TaskCard from '../components/TaskCard'
 
@@ -20,8 +23,8 @@ const Home = ({ user, profile }) => {
   const [fiveLocations, setFiveLocations] = useState([])
   const [locationsFound, setLocationsFound] = useState(false)
   const [backendData, setBackendData] = useState({})
-  const [activites, setActivities] = useState([])
-  const [userLocation, setUserLocation] = useState([])
+  const [activities, setActivities] = useState([])
+  const [taskLocation, setTaskLocation] = useState([])
 
   const getLocations = async (e) => {
     const response = await axios.post(
@@ -32,7 +35,6 @@ const Home = ({ user, profile }) => {
     )
 
     setLocations(response.data.elements)
-    console.log(locations)
     setLocationsFound(true)
   }
 
@@ -40,6 +42,7 @@ const Home = ({ user, profile }) => {
     setFiveLocations(chooseFive())
     if (user && profile) {
       getUserTask(profile.id)
+      getUserActivity(profile.id)
     }
   }, [locations])
 
@@ -53,8 +56,13 @@ const Home = ({ user, profile }) => {
 
   const getUserTask = async (id) => {
     const res = await getUserTaskLocation(id)
-    console.log(res.user[0].taskPlace)
-    setActivities(res.user[0].taskPlace)
+    // console.log(res)
+    setActivities(res)
+  }
+
+  const getUserActivity = async (id) => {
+    const res = await GetUserTaskActivity(id)
+    setTaskLocation(res)
   }
 
   function showPosition(position) {
@@ -84,9 +92,8 @@ const Home = ({ user, profile }) => {
         }
       }
 
-      console.log('selectedLocations after loop: ', selectedLocations)
+      // console.log('selectedLocations after loop: ', selectedLocations)
     }
-    console.log(selectedLocations)
     if (selectedLocations.length > 1) {
       convertToBackend(selectedLocations)
     }
@@ -97,7 +104,7 @@ const Home = ({ user, profile }) => {
     data.forEach((element) => {
       let temp = {
         name: element.tags.name,
-        url: `https://www.openstreepmap.org/node/${element.id}`,
+        url: `https://www.openstreetmap.org/node/${element.id}`,
         category: categoryKey + ': ' + categoryValue,
         gps: { lat: element.lat, lon: element.lon },
         taskId: 1
@@ -105,11 +112,30 @@ const Home = ({ user, profile }) => {
 
       CreateALocation(temp)
     })
-    console.log(backendData)
   }
 
   const CreateALocation = async (data) => {
     const res = await CreateLocation(data)
+  }
+  const CreateActivity = async (data) => {
+    const res = await pushToActivity(data)
+  }
+
+  const GetUserActivity = (data) => {
+    if (data.id) {
+      for (let i = 0; i < 5; i++) {
+        let temp = {
+          locationId:
+            data.userTask[0].taskPlace[
+              Math.floor(Math.random() * data.userTask[0].taskPlace.length)
+            ].id,
+          taskId: data.userTask[0].id,
+          userId: data.id,
+          completed: false
+        }
+        // CreateActivity(temp)
+      }
+    }
   }
 
   let navigate = useNavigate()
@@ -132,13 +158,23 @@ const Home = ({ user, profile }) => {
         </div>
       )}
       <div>
-        {activites.map((act, index) => (
-          <div>
-            {index < 5 && (
-              <TaskCard name={act.name} category={act.category} url={act.url} />
-            )}
-          </div>
-        ))}
+        {taskLocation.length > 5 &&
+          taskLocation.map((act, index) => (
+            <div>
+              {index < 5 && (
+                <TaskCard
+                  id={act.id}
+                  locationId={act.locationId}
+                  userId={act.userId}
+                  taskId={act.taskId}
+                  completed={act.completed}
+                  // name={act.name}
+                  // category={act.category}
+                  // url={act.url}
+                />
+              )}
+            </div>
+          ))}
       </div>
     </div>
   )
