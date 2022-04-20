@@ -48,8 +48,8 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
     <div className="profile-page">
       <div className="initial-box">
         <p className="initials">
-          {/* {profile.firstName[0]}
-          {profile.lastName[0]} */}
+          {profile.firstName[0]}
+          {profile.lastName[0]}
         </p>
       </div>
       <h1>
@@ -67,7 +67,7 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
             name="firstName"
             value={profile.firstName}
             readOnly={formStatus}
-            maxlength="35"
+            maxLength="35"
           />
         </label>
         <label className="profile-item hiding" htmlFor="lastName">
@@ -81,7 +81,7 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
             name="lastName"
             value={profile.lastName}
             readOnly={formStatus}
-            maxlength="35"
+            maxLength="35"
           />
         </label>
         <label className="profile-item" htmlFor="email">
