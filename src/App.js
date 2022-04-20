@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import { GetProfile } from "./services/UserServices";
 
 const App = () => {
+<<<<<<< HEAD
   const [authenticated, toggleAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState({
@@ -25,6 +26,23 @@ const App = () => {
     createdAt: "",
     updatedAt: "",
   });
+=======
+  const [authenticated, toggleAuthenticated] = useState(false)
+  const [user, setUser] = useState(null)
+  const [profile, setProfile] = useState({
+    id: 1,
+    firstName: '',
+    lastName: '',
+    location: '',
+    username: '',
+    passwordDigest: '',
+    email: '',
+    activityList: null,
+    score: 2,
+    createdAt: '',
+    updatedAt: ''
+  })
+>>>>>>> 076a7ea (test.)
 
   const handleLogOut = () => {
     //Reset all auth related state and clear localStorage

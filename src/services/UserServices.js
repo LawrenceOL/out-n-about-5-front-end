@@ -27,15 +27,16 @@ export const sendDataToBackEnd = async (data) => {
 
 export const CreateLocation = async (data) => {
   try {
-    const res = await Client.post(`/location/create`, data)
+    const res = await Client.post(`/location/createone`, data)
+    console.log('location created')
   } catch (error) {
     throw error
   }
 }
 
-export const GetAllActivities = async () => {
+export const getUserTaskLocation = async (id) => {
   try {
-    const res = await Client.get('/user/activities')
+    const res = await Client.get(`/user/task/location/${id}`)
     console.log(res)
     return res.data
   } catch (error) {

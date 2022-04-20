@@ -5,7 +5,7 @@ import { letterSpacing } from '@mui/system'
 import {
   CreateLocation,
   sendDataToBackEnd,
-  GetAllActivities
+  getUserTaskLocation
 } from '../services/UserServices'
 import TaskCard from '../components/TaskCard'
 
@@ -38,6 +38,9 @@ const Home = ({ user, profile }) => {
 
   useEffect(() => {
     setFiveLocations(chooseFive())
+    if (user && profile) {
+      getUserTask(profile.id)
+    }
   }, [locations])
 
   function getLocation() {
@@ -48,11 +51,11 @@ const Home = ({ user, profile }) => {
     }
   }
 
-  // const getAllActivities = async () => {
-  //   const res = await GetAllActivities()
-  //   setActivities(res.taskInfo[0].user)
-  //   setUserLocation(res.actLocation[0].user_act)
-  // }
+  const getUserTask = async (id) => {
+    const res = await getUserTaskLocation(id)
+    console.log(res.user[0].taskPlace)
+    setActivities(res.user[0].taskPlace)
+  }
 
   function showPosition(position) {
     coordinates = [position.coords.latitude, position.coords.longitude]
@@ -79,40 +82,36 @@ const Home = ({ user, profile }) => {
 
           locationsArray.splice(randomIndex, 1)
         }
-      } else {
-        break
       }
 
       console.log('selectedLocations after loop: ', selectedLocations)
     }
+    console.log(selectedLocations)
     if (selectedLocations.length > 1) {
-      // convertToBackend(selectedLocations)
+      convertToBackend(selectedLocations)
     }
     return selectedLocations
   }
 
-  // const sendTobackEnd = async (data) => {
-  //   const res = await CreateLocation(data)
-  // }
+  const convertToBackend = (data) => {
+    data.forEach((element) => {
+      let temp = {
+        name: element.tags.name,
+        url: `https://www.openstreepmap.org/node/${element.id}`,
+        category: categoryKey + ': ' + categoryValue,
+        gps: { lat: element.lat, lon: element.lon },
+        taskId: 1
+      }
 
-  // let arrData = []
-  // const convertToBackend = (apiData) => {
-  //   let data = {}
-  //   arrData = apiData.map((location) => {
-  //     data = {
-  //       location: {
-  //         name: location.tags.name,
-  //         url: `www.openstreetmap.org/node/${location.id}`,
-  //         gps: { lat: location.lat, lon: location.lon },
-  //         category: `${categoryKey}` + ': ' + `${categoryValue}`
-  //       },
-  //       userId: user.id
-  //     }
-  //     sendTobackEnd(data)
-  //     arrData.push(data)
-  //   })
-  // }
-  // console.log(arrData)
+      CreateALocation(temp)
+    })
+    console.log(backendData)
+  }
+
+  const CreateALocation = async (data) => {
+    const res = await CreateLocation(data)
+  }
+
   let navigate = useNavigate()
 
   return (
@@ -133,13 +132,13 @@ const Home = ({ user, profile }) => {
         </div>
       )}
       <div>
-        {/* {userLocation.map((act, index) => (
+        {activites.map((act, index) => (
           <div>
-            {act.Activity.userId === user.id && index < 5 && (
+            {index < 5 && (
               <TaskCard name={act.name} category={act.category} url={act.url} />
             )}
           </div>
-        ))} */}
+        ))}
       </div>
     </div>
   )
