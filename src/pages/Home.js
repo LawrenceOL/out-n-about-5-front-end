@@ -8,6 +8,7 @@ import {
   getUserTaskLocation,
   pushToActivity,
   GetProfile,
+  CreateTask,
   GetUserTaskActivity
 } from '../services/UserServices'
 import TaskCard from '../components/TaskCard'
@@ -138,6 +139,10 @@ const Home = ({ user, profile }) => {
     }
   }
 
+  const createTask = async () => {
+    const res = await CreateTask()
+  }
+
   let navigate = useNavigate()
 
   return (
@@ -146,6 +151,7 @@ const Home = ({ user, profile }) => {
       {!locationsFound && (
         <button onClick={(e) => getLocation()}>Start the Game!</button>
       )}
+      {<button onClick={() => createTask()}>Create Task</button>}
 
       {locationsFound && (
         <div>
