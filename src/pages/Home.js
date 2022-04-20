@@ -38,7 +38,6 @@ const Home = ({ user, profile }) => {
 
   useEffect(() => {
     setFiveLocations(chooseFive())
-    // getAllActivities()
   }, [locations])
 
   function getLocation() {
@@ -49,14 +48,11 @@ const Home = ({ user, profile }) => {
     }
   }
 
-  console.log(activites)
-  console.log(userLocation)
-
-  const getAllActivities = async () => {
-    const res = await GetAllActivities()
-    setActivities(res.taskInfo[0].user)
-    setUserLocation(res.actLocation[0].user_act)
-  }
+  // const getAllActivities = async () => {
+  //   const res = await GetAllActivities()
+  //   setActivities(res.taskInfo[0].user)
+  //   setUserLocation(res.actLocation[0].user_act)
+  // }
 
   function showPosition(position) {
     coordinates = [position.coords.latitude, position.coords.longitude]
@@ -90,36 +86,34 @@ const Home = ({ user, profile }) => {
       console.log('selectedLocations after loop: ', selectedLocations)
     }
     if (selectedLocations.length > 1) {
-      convertToBackend(selectedLocations)
+      // convertToBackend(selectedLocations)
     }
     return selectedLocations
   }
 
-  const sendTobackEnd = async (data) => {
-    const res = await CreateLocation(data)
-  }
+  // const sendTobackEnd = async (data) => {
+  //   const res = await CreateLocation(data)
+  // }
 
-  let arrData = []
-  const convertToBackend = (apiData) => {
-    let data = {}
-    arrData = apiData.map((location) => {
-      data = {
-        location: {
-          name: location.tags.name,
-          url: `www.openstreetmap.org/node/${location.id}`,
-          gps: { lat: location.lat, lon: location.lon },
-          category: `${categoryKey}` + ': ' + `${categoryValue}`
-        },
-        userId: user.id
-      }
-      sendTobackEnd(data)
-      arrData.push(data)
-    })
-  }
-  console.log(arrData)
+  // let arrData = []
+  // const convertToBackend = (apiData) => {
+  //   let data = {}
+  //   arrData = apiData.map((location) => {
+  //     data = {
+  //       location: {
+  //         name: location.tags.name,
+  //         url: `www.openstreetmap.org/node/${location.id}`,
+  //         gps: { lat: location.lat, lon: location.lon },
+  //         category: `${categoryKey}` + ': ' + `${categoryValue}`
+  //       },
+  //       userId: user.id
+  //     }
+  //     sendTobackEnd(data)
+  //     arrData.push(data)
+  //   })
+  // }
+  // console.log(arrData)
   let navigate = useNavigate()
-
-  console.log(profile)
 
   return (
     <div className="home-page">
@@ -139,13 +133,13 @@ const Home = ({ user, profile }) => {
         </div>
       )}
       <div>
-        {userLocation.map((act, index) => (
+        {/* {userLocation.map((act, index) => (
           <div>
             {act.Activity.userId === user.id && index < 5 && (
               <TaskCard name={act.name} category={act.category} url={act.url} />
             )}
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   )
