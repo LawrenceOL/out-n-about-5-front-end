@@ -1,13 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { GetLocation } from '../services/UserServices'
 
 const TaskCard = (props) => {
   const [checked, setChecked] = useState(false)
+  const [location, setLocation] = useState({})
 
   const handleChange = () => {
     setChecked(!checked)
   }
 
-  console.log(checked)
+  useEffect(() => {
+    getLocation(props.locationId)
+  }, [])
+
+  const getLocation = async (id) => {
+    const location = await GetLocation(id)
+    setLocation(location)
+  }
+  const getTask = () => {}
+  const getUser = () => {}
+  const getCompleted = () => {}
+  // console.log(checked)
 
   return (
     <div className="card">
@@ -17,8 +30,8 @@ const TaskCard = (props) => {
         alt="location"
       />
       <div className="card-container">
-        <h4 className="card-name">{props.name}</h4>
-        <p className="card-des card-b">{props.category}</p>
+        <h4 className="card-name">{location.name}</h4>
+        <p className="card-des card-b">{location.category}</p>
         <form>
           <label htmlFor="checkin">Check In:</label>
           <input
@@ -30,7 +43,7 @@ const TaskCard = (props) => {
             onChange={handleChange}
           />
         </form>
-        <a className="map-link" href={`https://${props.url}`}>
+        <a className="map-link" href={`https://${location.url}`}>
           Link to Map
         </a>
       </div>

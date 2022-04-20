@@ -33,7 +33,7 @@ const RegisterModal = (props) => {
       password: '',
       location: ''
     })
-    props.show = false
+    props.setShow(false)
   }
 
   if (!props.show) {

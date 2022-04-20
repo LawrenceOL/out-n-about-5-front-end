@@ -25,20 +25,43 @@ export const sendDataToBackEnd = async (data) => {
   }
 }
 
+export const GetLocation = async (id) => {
+  try {
+    const res = await Client.get(`/location/pk/${id}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
 export const CreateLocation = async (data) => {
   try {
-    const res = await Client.post(`/location/create`, data)
+    const res = await Client.post(`/location/createone`, data)
+    console.log('location created')
   } catch (error) {
     throw error
   }
 }
 
-export const GetAllActivities = async () => {
+export const getUserTaskLocation = async (id) => {
   try {
-    const res = await Client.get('/user/activities')
-    console.log(res)
+    const res = await Client.get(`/user/task/location/${id}`)
+
     return res.data
   } catch (error) {
     throw error
   }
+}
+
+export const pushToActivity = async (data) => {
+  try {
+    const res = await Client.post(`/activity/create`, data)
+    console.log('activity created')
+  } catch (error) {
+    throw error
+  }
+}
+
+export const GetUserTaskActivity = async (id) => {
+  const res = await Client.get(`/activity/user/${id}`)
+  return res.data
 }

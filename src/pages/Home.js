@@ -5,7 +5,10 @@ import { letterSpacing } from '@mui/system'
 import {
   CreateLocation,
   sendDataToBackEnd,
-  GetAllActivities
+  getUserTaskLocation,
+  pushToActivity,
+  GetProfile,
+  GetUserTaskActivity
 } from '../services/UserServices'
 import TaskCard from '../components/TaskCard'
 
@@ -20,8 +23,8 @@ const Home = ({ user, profile }) => {
   const [fiveLocations, setFiveLocations] = useState([])
   const [locationsFound, setLocationsFound] = useState(false)
   const [backendData, setBackendData] = useState({})
-  const [activites, setActivities] = useState([])
-  const [userLocation, setUserLocation] = useState([])
+  const [activities, setActivities] = useState([])
+  const [taskLocation, setTaskLocation] = useState([])
 
   const getLocations = async (e) => {
     const response = await axios.post(
@@ -32,12 +35,15 @@ const Home = ({ user, profile }) => {
     )
 
     setLocations(response.data.elements)
-    console.log(locations)
     setLocationsFound(true)
   }
 
   useEffect(() => {
     setFiveLocations(chooseFive())
+    if (user && profile) {
+      getUserTask(profile.id)
+      getUserActivity(profile.id)
+    }
   }, [locations])
 
   function getLocation() {
@@ -48,11 +54,16 @@ const Home = ({ user, profile }) => {
     }
   }
 
-  // const getAllActivities = async () => {
-  //   const res = await GetAllActivities()
-  //   setActivities(res.taskInfo[0].user)
-  //   setUserLocation(res.actLocation[0].user_act)
-  // }
+  const getUserTask = async (id) => {
+    const res = await getUserTaskLocation(id)
+    // console.log(res)
+    setActivities(res)
+  }
+
+  const getUserActivity = async (id) => {
+    const res = await GetUserTaskActivity(id)
+    setTaskLocation(res)
+  }
 
   function showPosition(position) {
     coordinates = [position.coords.latitude, position.coords.longitude]
@@ -79,40 +90,54 @@ const Home = ({ user, profile }) => {
 
           locationsArray.splice(randomIndex, 1)
         }
-      } else {
-        break
       }
 
-      console.log('selectedLocations after loop: ', selectedLocations)
+      // console.log('selectedLocations after loop: ', selectedLocations)
     }
     if (selectedLocations.length > 1) {
-      // convertToBackend(selectedLocations)
+      convertToBackend(selectedLocations)
     }
     return selectedLocations
   }
 
-  // const sendTobackEnd = async (data) => {
-  //   const res = await CreateLocation(data)
-  // }
+  const convertToBackend = (data) => {
+    data.forEach((element) => {
+      let temp = {
+        name: element.tags.name,
+        url: `https://www.openstreetmap.org/node/${element.id}`,
+        category: categoryKey + ': ' + categoryValue,
+        gps: { lat: element.lat, lon: element.lon },
+        taskId: 1
+      }
 
-  // let arrData = []
-  // const convertToBackend = (apiData) => {
-  //   let data = {}
-  //   arrData = apiData.map((location) => {
-  //     data = {
-  //       location: {
-  //         name: location.tags.name,
-  //         url: `www.openstreetmap.org/node/${location.id}`,
-  //         gps: { lat: location.lat, lon: location.lon },
-  //         category: `${categoryKey}` + ': ' + `${categoryValue}`
-  //       },
-  //       userId: user.id
-  //     }
-  //     sendTobackEnd(data)
-  //     arrData.push(data)
-  //   })
-  // }
-  // console.log(arrData)
+      CreateALocation(temp)
+    })
+  }
+
+  const CreateALocation = async (data) => {
+    const res = await CreateLocation(data)
+  }
+  const CreateActivity = async (data) => {
+    const res = await pushToActivity(data)
+  }
+
+  const GetUserActivity = (data) => {
+    if (data.id) {
+      for (let i = 0; i < 5; i++) {
+        let temp = {
+          locationId:
+            data.userTask[0].taskPlace[
+              Math.floor(Math.random() * data.userTask[0].taskPlace.length)
+            ].id,
+          taskId: data.userTask[0].id,
+          userId: data.id,
+          completed: false
+        }
+        // CreateActivity(temp)
+      }
+    }
+  }
+
   let navigate = useNavigate()
 
   return (
@@ -133,13 +158,23 @@ const Home = ({ user, profile }) => {
         </div>
       )}
       <div>
-        {/* {userLocation.map((act, index) => (
-          <div>
-            {act.Activity.userId === user.id && index < 5 && (
-              <TaskCard name={act.name} category={act.category} url={act.url} />
-            )}
-          </div>
-        ))} */}
+        {taskLocation.length > 5 &&
+          taskLocation.map((act, index) => (
+            <div>
+              {index < 5 && (
+                <TaskCard
+                  id={act.id}
+                  locationId={act.locationId}
+                  userId={act.userId}
+                  taskId={act.taskId}
+                  completed={act.completed}
+                  // name={act.name}
+                  // category={act.category}
+                  // url={act.url}
+                />
+              )}
+            </div>
+          ))}
       </div>
     </div>
   )
