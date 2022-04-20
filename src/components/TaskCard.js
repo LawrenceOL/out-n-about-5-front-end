@@ -7,11 +7,8 @@ const TaskCard = (props) => {
         alt="location"
       />
       <div className="card-container">
-        <h4 className="card-name">name</h4>
-        <p className="card-des card-b">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.{' '}
-        </p>
+        <h4 className="card-name">{props.name}</h4>
+        <p className="card-des card-b">{props.category}</p>
         <form>
           <label htmlFor="checkin">Check In:</label>
           <input
@@ -22,7 +19,7 @@ const TaskCard = (props) => {
             value="Checked In"
           />
         </form>
-        <a className="map-link" href="htpps://google.com">
+        <a className="map-link" href={`https://${props.url}`}>
           Link to Map
         </a>
       </div>
