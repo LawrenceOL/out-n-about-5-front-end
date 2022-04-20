@@ -17,6 +17,21 @@ export const UpdateProfile = async (pk, data) => {
   }
 }
 
+export const CreateTask = async () => {
+  try {
+    const res = await Client.post(`/task/create`, {
+      taskName: 'checkin',
+      location: '124 main',
+      description: 'string',
+      checkIn: false,
+      comment: 'value',
+      userId: 1
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
 export const sendDataToBackEnd = async (data) => {
   try {
     const res = await Client.post(`/location/data`, data)
