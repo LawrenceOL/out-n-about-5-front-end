@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 
-const Nav = ({ authenticated, user, handleLogOut }) => {
+const Nav = ({ authenticated, user, profile, handleLogOut }) => {
   let authenticatedOptions
   if (user) {
     authenticatedOptions = (
       <nav className="navBar">
-        <Link className="nav-link" to={`/profile/${user.id}`}>
+        <Link className="nav-link" to={`/profile/${profile.id}`}>
           Profile
         </Link>
         <Link className="nav-link" to="/">

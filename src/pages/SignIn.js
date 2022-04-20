@@ -21,7 +21,6 @@ const SignIn = (props) => {
     setFormValuer({ username: '', password: '' })
     props.setUser(payload)
     props.toggleAuthenticated(true)
-    console.log(payload)
     navigate(`/profile/${payload.user.id}`)
   }
 
