@@ -48,8 +48,8 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
     <div className="profile-page">
       <div className="initial-box">
         <p className="initials">
-          {/* {profile.firstName[0]}
-          {profile.lastName[0]} */}
+          {profile.firstName[0]}
+          {profile.lastName[0]}
         </p>
       </div>
       <h1>
