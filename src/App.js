@@ -44,8 +44,7 @@ const App = () => {
     const res = await GetProfile(id)
     setProfile(res)
   }
-  console.log(user)
-  console.log(profile.id)
+
   return (
     <div className="App">
       <Nav
