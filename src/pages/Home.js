@@ -74,7 +74,7 @@ const Home = ({ user, profile }) => {
   // choose five or less if there are less than five results
   function chooseFive() {
     let locationsArray = [...locations]
-    // console.log(locations);
+    console.log(locations)
     // console.log(locationsArray);
 
     if (locationsArray.length === 0) {
@@ -167,9 +167,9 @@ const Home = ({ user, profile }) => {
         {taskLocation.length > 5 &&
           taskLocation.map((act, index) => (
             <div>
-              {index < 5 && (
+              {index < 5 && !act.completed && (
                 <TaskCard
-                  id={act.id}
+                  activityId={act.id}
                   locationId={act.locationId}
                   userId={act.userId}
                   taskId={act.taskId}

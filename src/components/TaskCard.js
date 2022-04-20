@@ -1,26 +1,49 @@
 import { useEffect, useState } from 'react'
-import { GetLocation } from '../services/UserServices'
+import {
+  GetLocation,
+  GetOneActivity,
+  UpdateActivity
+} from '../services/UserServices'
 
 const TaskCard = (props) => {
   const [checked, setChecked] = useState(false)
-  const [location, setLocation] = useState({})
+  const [location, setLocation] = useState({
+    name: '',
+    url: '',
+    gps: {},
+    category: '',
+    taskId: ''
+  })
+  const [complete, setComplete] = useState(false)
 
-  const handleChange = () => {
+  const handleChange = (e) => {
     setChecked(!checked)
   }
 
   useEffect(() => {
     getLocation(props.locationId)
-  }, [])
+    getCompleted(props.activityId)
+    updateActivity(props.activityId, { completed: checked })
+  }, [checked])
 
   const getLocation = async (id) => {
     const location = await GetLocation(id)
     setLocation(location)
   }
+
+  const updateActivity = async (id, data) => {
+    const res = await UpdateActivity(id, data)
+    console.log(res)
+  }
   const getTask = () => {}
   const getUser = () => {}
-  const getCompleted = () => {}
+  const getCompleted = async (id) => {
+    const activity = await GetOneActivity(id)
+    console.log(activity)
+    setComplete(activity)
+  }
   // console.log(checked)
+  console.log(location.gps.lat)
 
   return (
     <div className="card">
@@ -43,6 +66,13 @@ const TaskCard = (props) => {
             onChange={handleChange}
           />
         </form>
+        <div></div>
+
+        <p>Lat: {location.gps.lat}</p>
+        <p>Lon: {location.gps.lon}</p>
+
+        <p>locationId:{location.id}</p>
+        <p>activityId:{props.activityId}</p>
         <a className="map-link" href={`https://${location.url}`}>
           Link to Map
         </a>

@@ -80,3 +80,13 @@ export const GetUserTaskActivity = async (id) => {
   const res = await Client.get(`/activity/user/${id}`)
   return res.data
 }
+
+export const GetOneActivity = async (id) => {
+  const res = await Client.get(`/activity/${id}`)
+  return res.data
+}
+
+export const UpdateActivity = async (id, data) => {
+  const res = await Client.put(`/activity/${id}`, data)
+  return res.data
+}
