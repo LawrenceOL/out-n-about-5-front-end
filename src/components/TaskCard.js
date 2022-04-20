@@ -1,4 +1,14 @@
+import { useState } from 'react'
+
 const TaskCard = (props) => {
+  const [checked, setChecked] = useState(false)
+
+  const handleChange = () => {
+    setChecked(!checked)
+  }
+
+  console.log(checked)
+
   return (
     <div className="card">
       <img
@@ -16,7 +26,8 @@ const TaskCard = (props) => {
             type="checkbox"
             id="checkin"
             name="checkin"
-            value="Checked In"
+            checked={checked}
+            onChange={handleChange}
           />
         </form>
         <a className="map-link" href={`https://${props.url}`}>

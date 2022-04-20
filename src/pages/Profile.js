@@ -9,11 +9,12 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
   const [updateClass, setUpdateClass] = useState('profile-input')
   const [updateAddress, setUpdateAddress] = useState('profile-address')
   const { id } = useParams()
+
   const updateProfile = async (id, data) => {
     await UpdateProfile(id, data)
     getProfile(id)
   }
-  console.log(user)
+
   useEffect(() => {
     getProfile(id)
   }, [])
@@ -47,8 +48,8 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
     <div className="profile-page">
       <div className="initial-box">
         <p className="initials">
-          {profile.firstName[0]}
-          {profile.lastName[0]}
+          {/* {profile.firstName[0]}
+          {profile.lastName[0]} */}
         </p>
       </div>
       <h1>

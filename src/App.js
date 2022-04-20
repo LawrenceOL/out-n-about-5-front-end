@@ -44,12 +44,15 @@ const App = () => {
     const res = await GetProfile(id)
     setProfile(res)
   }
-
+  console.log(user)
+  console.log(profile.id)
   return (
     <div className="App">
       <Nav
         authenticated={authenticated}
         user={user}
+        profile={profile}
+        // userid={id}
         handleLogOut={handleLogOut}
       />
       <main>

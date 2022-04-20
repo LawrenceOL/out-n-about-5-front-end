@@ -38,7 +38,7 @@ const Home = ({ user, profile }) => {
 
   useEffect(() => {
     setFiveLocations(chooseFive())
-    getAllActivities()
+    // getAllActivities()
   }, [locations])
 
   function getLocation() {
@@ -139,9 +139,9 @@ const Home = ({ user, profile }) => {
         </div>
       )}
       <div>
-        {userLocation.map((act) => (
+        {userLocation.map((act, index) => (
           <div>
-            {act.Activity.userId === user.id && (
+            {act.Activity.userId === user.id && index < 5 && (
               <TaskCard name={act.name} category={act.category} url={act.url} />
             )}
           </div>
