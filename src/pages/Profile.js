@@ -1,25 +1,21 @@
-import { GetProfile, UpdateProfile } from '../services/UserServices'
+import { GetProfile, UpdateProfile, DeleteUser } from '../services/UserServices'
 import { useEffect, useState } from 'react'
 import TaskCard from '../components/TaskCard'
-import { useParams } from 'react-router-dom'
-// import { DeleteUser } from '../'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
-const Profile = ({ user, profile, getProfile, setProfile}) => {
+const Profile = ({ user, profile, getProfile, setProfile, handleLogOut}) => {
   const [formStatus, setFormStatus] = useState(true)
   const [updateBtn, setUpdateBtn] = useState('Enable Update')
   const [updateClass, setUpdateClass] = useState('profile-input')
   const [updateAddress, setUpdateAddress] = useState('profile-address')
   const { id } = useParams()
+  const navigate = useNavigate()
 
   const updateProfile = async (id, data) => {
     await UpdateProfile(id, data)
     getProfile(id)
   }
-
-  // const deleteUser = async (id) => {
-  //   await DeleteUser(id)
-  // }
 
   useEffect(() => {
     getProfile(id)
@@ -51,8 +47,11 @@ const Profile = ({ user, profile, getProfile, setProfile}) => {
   }
 
   const handleDelete = (e) => {
+    DeleteUser(profile.id)
+    handleLogOut()
+    navigate('/')
+    }
     
-  }
 
   return (
     <div className="profile-page">
@@ -136,7 +135,9 @@ const Profile = ({ user, profile, getProfile, setProfile}) => {
           {updateBtn}
         </button>
       </form>
-      {/* <button className='delete-user' id='delete' name='delete' onClick={} */}
+      <div>
+      <button className='delete-user' id='delete' name='delete' onClick={handleDelete}>Delete User</button>
+    </div>
     </div>
   )
 }
