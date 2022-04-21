@@ -22,7 +22,7 @@ const App = () => {
     passwordDigest: '',
     email: '',
     activityList: null,
-    score: 2,
+    score: '',
     createdAt: '',
     updatedAt: ''
   })
@@ -71,7 +71,7 @@ const App = () => {
       <main>
         <Routes>
           <Route
-            path="/signin"
+            path="/"
             element={
               <SignIn
                 setUser={setUser}
@@ -79,9 +79,9 @@ const App = () => {
               />
             }
           />
-
+          {/* {user.id && */}
           <Route
-            path="/"
+            path="/activity/:id"
             element={
               <Home
                 user={user}
@@ -90,7 +90,7 @@ const App = () => {
               />
             }
           />
-
+          {/* } */}
           <Route
             path="/profile/:id"
             element={
@@ -100,6 +100,7 @@ const App = () => {
                 getProfile={getProfile}
                 setProfile={setProfile}
                 authenticated={authenticated}
+                handleLogOut={handleLogOut}
               />
             }
           />

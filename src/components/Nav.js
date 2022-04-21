@@ -8,7 +8,7 @@ const Nav = ({ authenticated, user, profile, handleLogOut }) => {
         <Link className="nav-link" to={`/profile/${profile.id}`}>
           Profile
         </Link>
-        <Link className="nav-link" to="/">
+        <Link className="nav-link" to={`/activity/${profile.id}`}>
           Activities
         </Link>
         <Link className="signout nav-link" onClick={handleLogOut} to="/">
@@ -22,9 +22,6 @@ const Nav = ({ authenticated, user, profile, handleLogOut }) => {
   const publicOptions = (
     <nav className="navBar">
       <Link className="nav-link" to="/">
-        Home
-      </Link>
-      <Link className="nav-link" to="/signin">
         Sign In
       </Link>
     </nav>
