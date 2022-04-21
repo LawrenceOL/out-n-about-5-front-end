@@ -8,7 +8,6 @@ import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import Home from './pages/Home'
 import { GetProfile } from './services/UserServices'
-import Activities from './pages/Activities'
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -63,7 +62,6 @@ const App = () => {
         authenticated={authenticated}
         user={user}
         profile={profile}
-        // userid={id}
         handleLogOut={handleLogOut}
       />
       <main>

@@ -9,8 +9,10 @@ const Profile = ({ user, profile, getProfile, setProfile, handleLogOut}) => {
   const [updateBtn, setUpdateBtn] = useState('Enable Update')
   const [updateClass, setUpdateClass] = useState('profile-input')
   const [updateAddress, setUpdateAddress] = useState('profile-address')
+  const [deleteBtn, setDeleteBtn] = useState('delete-hiding')
   const { id } = useParams()
   const navigate = useNavigate()
+  
 
   const updateProfile = async (id, data) => {
     await UpdateProfile(id, data)
@@ -28,6 +30,7 @@ const Profile = ({ user, profile, getProfile, setProfile, handleLogOut}) => {
       updateProfile(id, profile)
       setUpdateClass('profile-input')
       setUpdateAddress('profile-address')
+      setDeleteBtn('delete-hiding')
       setFormStatus(true)
       setUpdateBtn('Enable Update')
     }
@@ -36,6 +39,7 @@ const Profile = ({ user, profile, getProfile, setProfile, handleLogOut}) => {
       setFormStatus(false)
       setUpdateClass('profile-input-updating')
       setUpdateAddress('profile-address-updating')
+      setDeleteBtn('delete-showing')
       setUpdateBtn('Update')
     } else {
       setFormStatus(true)
@@ -52,7 +56,6 @@ const Profile = ({ user, profile, getProfile, setProfile, handleLogOut}) => {
     navigate('/')
     }
     
-
   return (
     <div className="profile-page">
       <div className="initial-box">
@@ -136,7 +139,7 @@ const Profile = ({ user, profile, getProfile, setProfile, handleLogOut}) => {
         </button>
       </form>
       <div>
-      <button className='delete-user' id='delete' name='delete' onClick={handleDelete}>Delete User</button>
+      <button className={deleteBtn} id='delete' name='delete' onClick={handleDelete}>Delete User</button>
     </div>
     </div>
   )
