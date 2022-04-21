@@ -51,9 +51,7 @@ export const GetLocation = async (id) => {
 export const CreateLocation = async (data) => {
   try {
     const res = await Client.post(`/location/createone`, data)
-    console.log(res)
     return res
-    console.log('location created')
   } catch (error) {
     throw error
   }
@@ -89,7 +87,6 @@ export const getUserTaskLocation = async (id) => {
 export const pushToActivity = async (data) => {
   try {
     const res = await Client.post(`/activity/create`, data)
-    console.log('activity created')
   } catch (error) {
     throw error
   }
