@@ -2,48 +2,91 @@ import { useEffect, useState } from 'react'
 import {
   GetLocation,
   GetOneActivity,
-  UpdateActivity
+  UpdateActivity,
+  CreateLocation,
+  pushToActivity,
+  DeleteLocation
 } from '../services/UserServices'
 
 const TaskCard = (props) => {
   const [checked, setChecked] = useState(false)
-  const [location, setLocation] = useState({
-    name: '',
-    url: '',
-    gps: {},
-    category: '',
-    taskId: ''
+  const [location, setLocation] = useState('')
+  const [activityData, setActivityData] = useState({
+    locationId: '',
+    userId: props.profile.id,
+    taskId: 1,
+    completed: checked
   })
-  const [complete, setComplete] = useState(false)
+  // const [location, setLocation] = useState({
+  //   name: '',
+  //   url: '',
+  //   gps: {},
+  //   category: '',
+  //   taskId: ''
+  // })
+  // const [complete, setComplete] = useState(false)
 
   const handleChange = (e) => {
     setChecked(!checked)
   }
 
   useEffect(() => {
-    getLocation(props.locationId)
-    getCompleted(props.activityId)
-    updateActivity(props.activityId, { completed: checked })
+    // if (checked === true && !activityData.locationId) {
+    //   convertToBackend()
+    // }
+    if (activityData.locationId) {
+      CreateActivity(activityData)
+    }
+    if (checked === true) {
+      DeleteLocation(props.id)
+    }
   }, [checked])
 
-  const getLocation = async (id) => {
-    const location = await GetLocation(id)
-    setLocation(location)
+  const CreateALocation = async (data) => {
+    const res = await CreateLocation(data)
+    console.log(res)
+    setLocation(res.data)
+    let temp = { ...activityData }
+    temp.locationId = res.data.id
+    temp.completed = true
+    setActivityData(temp)
   }
 
-  const updateActivity = async (id, data) => {
-    const res = await UpdateActivity(id, data)
-    console.log(res)
+  // const convertToBackend = () => {
+  //   let temp = {
+  //     name: props.name,
+  //     url: props.url,
+  //     category: props.category,
+  //     gps: { lat: props.lat, lon: props.lon },
+  //     taskId: 1
+  //   }
+
+  //   // CreateALocation(temp)
+  //   DeleteLocation(props.id)
+  // }
+
+  const CreateActivity = async (data) => {
+    const res = await pushToActivity(data)
   }
-  const getTask = () => {}
-  const getUser = () => {}
-  const getCompleted = async (id) => {
-    const activity = await GetOneActivity(id)
-    console.log(activity)
-    setComplete(activity)
-  }
+
+  // const getLocation = async (id) => {
+  //   const location = await GetLocation(id)
+  //   setLocation(location)
+  // }
+
+  // const updateActivity = async (id, data) => {
+  //   const res = await UpdateActivity(id, data)
+  //   console.log(res)
+  // }
+  // const getTask = () => {}
+  // const getUser = () => {}
+  // const getCompleted = async (id) => {
+  //   const activity = await GetOneActivity(id)
+  //   console.log(activity)
+  //   setComplete(activity)
+  // }
   // console.log(checked)
-  console.log(location.gps.lat)
+  // console.log(location.gps.lat)
 
   return (
     <div className="card">
@@ -53,30 +96,36 @@ const TaskCard = (props) => {
         alt="location"
       />
       <div className="card-container">
-        <h4 className="card-name">{location.name}</h4>
-        <p className="card-des card-b">{location.category}</p>
+        {props.name && <h4 className="card-name">{props.name}</h4>}
+
+        {props.category && <p className="card-des card-b">{props.category}</p>}
         <form>
           <label htmlFor="checkin">Check In:</label>
-          <input
-            className="card-checkin card-b"
-            type="checkbox"
-            id="checkin"
-            name="checkin"
-            checked={checked}
-            onChange={handleChange}
-          />
+          {!props.completed === true && (
+            <input
+              className="card-checkin card-b"
+              type="checkbox"
+              id="checkin"
+              name="checkin"
+              value=""
+              checked={checked}
+              onChange={handleChange}
+            />
+          )}
         </form>
-        <div></div>
-
-        <p>Lat: {location.gps.lat}</p>
-        <p>Lon: {location.gps.lon}</p>
-
-        <p>locationId:{location.id}</p>
-        <p>activityId:{props.activityId}</p>
-        <a className="map-link" href={`https://${location.url}`}>
-          Link to Map
-        </a>
       </div>
+
+      <p>Lat: {props.lat}</p>
+      <p>Lat: {props.lon}</p>
+
+      {/* <p>locationId:{location.id}</p>
+      <p>activityId:{props.activityId}</p> */}
+      <a
+        className="map-link"
+        href={`https://www.openstreetmap.org/node/${props.id}`}
+      >
+        Link to Map
+      </a>
     </div>
   )
 }
