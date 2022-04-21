@@ -59,7 +59,7 @@ const Home = ({ user, profile }) => {
 
   const getUserTask = async (id) => {
     const res = await getUserTaskLocation(id)
-    // console.log(res.userTask[0].taskPlace)
+    console.log(res)
     setActivities(res.userTask[0].taskPlace)
   }
 
@@ -87,10 +87,6 @@ const Home = ({ user, profile }) => {
     console.log(locations)
     // console.log(locationsArray);
 
-    if (locationsArray.length === 0) {
-      locations[0] = 'Sorry, no restaurants found in your area'
-    }
-
     for (let i = 0; i < 5; i++) {
       if (locationsArray.length > 0) {
         {
@@ -113,13 +109,15 @@ const Home = ({ user, profile }) => {
 
   const convertToBackend = (data) => {
     data.forEach((element, index) => {
+      console.log(profile.id)
       if (index < 5) {
         let temp = {
-          name: element.name,
+          name: element.tags.name,
           url: `https://www.openstreetmap.org/node/${element.id}`,
           category: categoryKey + ': ' + categoryValue,
           gps: { lat: element.lat, lon: element.lon },
-          taskId: 1
+          taskId: profile.id
+
         }
 
         CreateALocation(temp)
@@ -145,7 +143,7 @@ const Home = ({ user, profile }) => {
             data.userTask[0].taskPlace[
               Math.floor(Math.random() * data.userTask[0].taskPlace.length)
             ].id,
-          taskId: data.userTask[0].id,
+          taskId: data.id,
           userId: data.id,
           completed: false
         }
@@ -154,8 +152,8 @@ const Home = ({ user, profile }) => {
     }
   }
 
-  const createTask = async () => {
-    const res = await CreateTask()
+  const createTask = async (id) => {
+    const res = await CreateTask(id)
   }
   console.log(taskLocation)
   console.log(activities)
@@ -166,28 +164,29 @@ const Home = ({ user, profile }) => {
   return (
     <div className="home-page">
       <h1>OUT AND ABOUT <span className='larger'>5</span></h1>
-      {!locationsFound && (
-        <button className='profile-button' onClick={(e) => getLocation()}>Start the Game!</button>
+      {!locationsFound && profile.id &&(
+          <button className='profile-button' onClick={(e) => getLocation()}>Start the Game!</button>
       )}
-      {<button className='profile-button' onClick={() => createTask()}>Create Task</button>}
+      {/* {<button className='profile-button' onClick={() => createTask(user.id)}>Create Task</button>} */}
       {locationsFound && (
         <div>
           <p>"We found activities: "</p>
-
+          <div className='card-pack'>
           {fiveLocations.length > 0 &&
             fiveLocations.map((selectedLocations) => (
               <div>
-                <p key={selectedLocations.id}>{selectedLocations.name}</p>
+                <p key={selectedLocations.id}>{selectedLocations.tags.name}</p>
                 <TaskCard
                   {...selectedLocations}
                   categoryKey={categoryKey}
                   categoryValue={categoryValue}
                   profile={profile}
-                  name={selectedLocations.name}
-                  category={selectedLocations.leisure}
+                  name={selectedLocations.tags.name}
+                  category={selectedLocations.tags.leisure}
                 />
               </div>
             ))}
+            </div>
         </div>
       )}
       <div className='card-pack'>

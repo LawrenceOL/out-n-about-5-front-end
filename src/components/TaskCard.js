@@ -14,7 +14,7 @@ const TaskCard = (props) => {
   const [activityData, setActivityData] = useState({
     locationId: '',
     userId: props.profile.id,
-    taskId: 1,
+    taskId: props.profile.id,
     completed: checked
   })
   // const [location, setLocation] = useState({

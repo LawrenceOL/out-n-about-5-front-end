@@ -17,7 +17,7 @@ export const UpdateProfile = async (pk, data) => {
   }
 }
 
-export const CreateTask = async () => {
+export const CreateTask = async (id) => {
   try {
     const res = await Client.post(`/task/create`, {
       taskName: 'checkin',
@@ -25,7 +25,7 @@ export const CreateTask = async () => {
       description: 'string',
       checkIn: false,
       comment: 'value',
-      userId: 1
+      userId: id
     })
   } catch (error) {
     throw error
@@ -100,7 +100,7 @@ export const GetUserTaskActivity = async (id) => {
   return res.data
 }
 export const DeleteUser = async (id) => {
-  const res = await Client.destroy(`/delete/${id}`)
+  const res = await Client.delete(`user/delete/${id}`)
 }
 export const GetOneActivity = async (id) => {
   const res = await Client.get(`/activity/${id}`)
