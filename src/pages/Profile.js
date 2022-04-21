@@ -2,8 +2,10 @@ import { GetProfile, UpdateProfile } from '../services/UserServices'
 import { useEffect, useState } from 'react'
 import TaskCard from '../components/TaskCard'
 import { useParams } from 'react-router-dom'
+// import { DeleteUser } from '../'
 
-const Profile = ({ user, profile, getProfile, setProfile }) => {
+
+const Profile = ({ user, profile, getProfile, setProfile}) => {
   const [formStatus, setFormStatus] = useState(true)
   const [updateBtn, setUpdateBtn] = useState('Enable Update')
   const [updateClass, setUpdateClass] = useState('profile-input')
@@ -14,6 +16,10 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
     await UpdateProfile(id, data)
     getProfile(id)
   }
+
+  // const deleteUser = async (id) => {
+  //   await DeleteUser(id)
+  // }
 
   useEffect(() => {
     getProfile(id)
@@ -42,6 +48,10 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
 
   const handleChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value })
+  }
+
+  const handleDelete = (e) => {
+    
   }
 
   return (
@@ -126,6 +136,7 @@ const Profile = ({ user, profile, getProfile, setProfile }) => {
           {updateBtn}
         </button>
       </form>
+      {/* <button className='delete-user' id='delete' name='delete' onClick={} */}
     </div>
   )
 }

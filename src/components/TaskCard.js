@@ -29,7 +29,10 @@ const TaskCard = (props) => {
   const handleChange = (e) => {
     setChecked(!checked)
   }
-
+  
+  // useEffect(() => {
+  //   getLocation(props.locationId)
+  // }, [])
   useEffect(() => {
     // if (checked === true && !activityData.locationId) {
     //   convertToBackend()
@@ -68,7 +71,6 @@ const TaskCard = (props) => {
   const CreateActivity = async (data) => {
     const res = await pushToActivity(data)
   }
-
   // const getLocation = async (id) => {
   //   const location = await GetLocation(id)
   //   setLocation(location)

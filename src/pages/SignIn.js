@@ -56,8 +56,8 @@ const SignIn = (props) => {
             />
           </div>
           {/* Sign In Button */}
-          <div className="signin-button-border">
-            <button disabled={!formValuer.username || !formValuer.password}>
+          <div>
+            <button className='signin-button' disabled={!formValuer.username || !formValuer.password}>
               Sign In
             </button>
           </div>
@@ -65,6 +65,10 @@ const SignIn = (props) => {
       </div>
       <div className="register-button-wrapper">
         {/* REGISTER BUTTON */}
+        <div className='register-intro'>
+        <h1 className='register-title'>Welcome Traveler</h1>
+        <p>Enter your info and join us for an adventure!</p>
+        </div>
         <button className="open-modal" onClick={() => setShow(true)}>
           Register
         </button>

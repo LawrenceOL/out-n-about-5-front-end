@@ -36,7 +36,6 @@ const Home = ({ user, profile }) => {
         out body;
         `
     )
-
     setLocations(response.data.elements)
     setLocationsFound(true)
   }
@@ -99,14 +98,13 @@ const Home = ({ user, profile }) => {
           // console.log("Random index is: ", randomIndex);
           // console.log("pushing: ", locationsArray[randomIndex]);
           selectedLocations.push(locationsArray[randomIndex])
-
           locationsArray.splice(randomIndex, 1)
         }
       }
 
       // console.log('selectedLocations after loop: ', selectedLocations)
     }
-    if (selectedLocations.length > 1) {
+    if (selectedLocations.length > 0) {
       convertToBackend(selectedLocations)
       console.log(selectedLocations)
     }
@@ -167,16 +165,16 @@ const Home = ({ user, profile }) => {
   console.log(fiveLocations)
   return (
     <div className="home-page">
-      <h1>Out and About 5</h1>
+      <h1>OUT AND ABOUT <span className='larger'>5</span></h1>
       {!locationsFound && (
-        <button onClick={(e) => getLocation()}>Start the Game!</button>
+        <button className='profile-button' onClick={(e) => getLocation()}>Start the Game!</button>
       )}
-      {<button onClick={() => createTask()}>Create Task</button>}
+      {<button className='profile-button' onClick={() => createTask()}>Create Task</button>}
       {locationsFound && (
         <div>
           <p>"We found activities: "</p>
 
-          {fiveLocations.length > 1 &&
+          {fiveLocations.length > 0 &&
             fiveLocations.map((selectedLocations) => (
               <div>
                 <p key={selectedLocations.id}>{selectedLocations.tags.name}</p>

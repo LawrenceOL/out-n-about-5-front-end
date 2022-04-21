@@ -36,11 +36,21 @@ body{
   flex-direction: column;
   justify-content: center;
 }
+
 .register-button-wrapper {
   display: flex;
+  flex-direction: column;
   width: 100%;
   justify-content: center;
   align-items: center;
+  color: black;
+}
+.register-intro {
+  margin: 0px 0px 20px 0px;
+}
+.register-title {
+  font-size: 40px;
+  margin:0px;
 }
 .signin-button {
     font-size: 14px;
@@ -54,14 +64,11 @@ body{
     box-shadow: none;
     color: #eee;
     background:transparent;
+    transform:translate(1px,1px);
   }
   .signin-title {
     font-size: 50px;
   }
-
-.signin-button:hover {
-  transform:translate(1px,1px);
-}
 /* REGISTRATION MODAL STYLING */
 .open-modal {
   background-image:linear-gradient(to bottom right, #25b542 20%, #1c93ff);
@@ -268,7 +275,7 @@ border-radius:5px;
 margin:0px 10px;
 }
 .nav-link:hover {
-background-color: #1ca651;
+background-color: #24b450;
 transform: scale(1.2);
 cursor: pointer;
 }
@@ -291,6 +298,7 @@ cursor: pointer;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 .initial-box {
+  font-family: 'Jost', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -303,7 +311,7 @@ cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .initials {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Righteous', cursive;
   color:white;
   font-size: 50px;
 }
@@ -332,10 +340,11 @@ cursor: pointer;
 .profile-address-updating {
   width: 400px;
   font-family: Arial, Helvetica, sans-serif;
-  margin: 0px 0px 0px 10px;
+  margin: 0px 0px 0px 0px;
   resize: none;
 }
 .profile-input {
+  width: 400px;
   font-family: 'Jost', sans-serif;
   margin: auto;
   background-color: transparent;
@@ -346,7 +355,7 @@ cursor: pointer;
   
 }
 .profile-input-updating {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Jost', sans-serif;
   margin: 0px 0px 0px 10px;
   width:400px;
   background: white;
@@ -365,14 +374,17 @@ cursor: pointer;
   font-size: 16px;
   font-weight: bold;
   height: 40px;
+  margin: 5px 5px;
+  width: 200px;
 }
 .profile-button:hover {
   transform: translate(1px, 1px);
 }
 /* Card */
 .card {
+  min-width:200px;
   width: 200px;
-  height: 400px;
+  height: 350px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 5px;
@@ -392,18 +404,65 @@ cursor: pointer;
   flex-direction: column;
 }
 .card-name {
+  word-break: break-word;
+  white-space: pre-wrap;
   font-size: 20px;
-  margin: 5px;
+  padding: 0px 10px;
+  margin: 0px 5px 0px 5px;
 }
 .map-link {
   padding: 10px 0px 0px 0px;
+  color: #333;
+}
+.map-link:hover {
+  background: -webkit-linear-gradient(right bottom, #25b542 15%, #1c93ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .card-checkin {
   width: 15px;
-  height:15px; 
+  height:15px;
+  padding: 0px;
+  vertical-align: middle;
 }
 
-.card-des {
+.card-cat {
   font-size: 14px;
-  padding: 0 10px 10px 10px;
+  padding: -20px 10px -20px 10px;
+  color: grey;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+/* Cards Set of 5 */
+.card-pack {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Righteous', cursive;
+}
+
+.larger {
+  vertical-align: -10%;
+  font-size: 50px;
+  background: -webkit-linear-gradient(right bottom, #25b542 15%, #1c93ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(2px 2px #333);
+}
+
+.ci {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
