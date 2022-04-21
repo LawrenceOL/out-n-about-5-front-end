@@ -53,11 +53,13 @@ body{
   margin:0px;
 }
 .signin-button {
+    width: 150px;
     font-size: 14px;
     padding: .5rem 3rem;
     border: solid 2.5px #eee;
     background: transparent;
-    background-origin: border-box;    margin: 10px;
+    background-origin: border-box;    
+    margin: 5px auto;
     color:white;
 }
   .signin-button:hover {
