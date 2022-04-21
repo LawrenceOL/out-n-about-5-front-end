@@ -124,7 +124,7 @@ const TaskCard = (props) => {
       <p>activityId:{props.activityId}</p> */}
       <a
         className="map-link"
-        href={`https://www.openstreetmap.org/node/${props.id}`}
+        href={props.url}
       >
         Link to Map
       </a>
