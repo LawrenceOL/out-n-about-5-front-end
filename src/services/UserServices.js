@@ -51,7 +51,26 @@ export const GetLocation = async (id) => {
 export const CreateLocation = async (data) => {
   try {
     const res = await Client.post(`/location/createone`, data)
+    console.log(res)
+    return res
     console.log('location created')
+  } catch (error) {
+    throw error
+  }
+}
+
+export const UpdateLocation = async (id, data) => {
+  try {
+    const res = await Client.put(`/location/update/${id}`, data)
+    return res
+  } catch (error) {
+    throw error
+  }
+}
+
+export const DeleteLocation = async (id) => {
+  try {
+    const res = await Client.delete(`/location/delete/${id}`)
   } catch (error) {
     throw error
   }
@@ -80,7 +99,15 @@ export const GetUserTaskActivity = async (id) => {
   const res = await Client.get(`/activity/user/${id}`)
   return res.data
 }
-
 export const DeleteUser = async (id) => {
   const res = await Client.destroy(`/delete/${id}`)
+}
+export const GetOneActivity = async (id) => {
+  const res = await Client.get(`/activity/${id}`)
+  return res.data
+}
+
+export const UpdateActivity = async (id, data) => {
+  const res = await Client.put(`/activity/${id}`, data)
+  return res.data
 }
