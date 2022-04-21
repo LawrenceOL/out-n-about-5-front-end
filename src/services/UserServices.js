@@ -80,3 +80,7 @@ export const GetUserTaskActivity = async (id) => {
   const res = await Client.get(`/activity/user/${id}`)
   return res.data
 }
+
+export const DeleteUser = async (id) => {
+  const res = await Client.destroy(`/delete/${id}`)
+}
