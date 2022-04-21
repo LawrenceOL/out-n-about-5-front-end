@@ -147,7 +147,7 @@ const Home = ({ user, profile }) => {
 
   return (
     <div className="home-page">
-      <h1>Out and About 5</h1>
+      <h1>OUT AND ABOUT <span className='larger'>5</span></h1>
       {!locationsFound && (
         <button onClick={(e) => getLocation()}>Start the Game!</button>
       )}

@@ -8,6 +8,7 @@ import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import Home from './pages/Home'
 import { GetProfile } from './services/UserServices'
+import Activities from './pages/Activities'
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -57,6 +58,7 @@ const App = () => {
     setProfile(res)
   }
 
+
   return (
     <div className="App">
       <Nav
@@ -101,6 +103,15 @@ const App = () => {
               />
             }
           />
+
+          {/* NEW PAGE */}
+          <Route
+          path='/activities'
+          element={<Activities
+          />}/>
+          {/* END OF NEW PAGE */}
+
+
         </Routes>
       </main>
     </div>

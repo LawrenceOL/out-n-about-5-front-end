@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react'
 import TaskCard from '../components/TaskCard'
 import { useParams } from 'react-router-dom'
 
-const Profile = ({ user, profile, getProfile, setProfile }) => {
+
+const Profile = ({ user, profile, getProfile, setProfile}) => {
   const [formStatus, setFormStatus] = useState(true)
   const [updateBtn, setUpdateBtn] = useState('Enable Update')
   const [updateClass, setUpdateClass] = useState('profile-input')
