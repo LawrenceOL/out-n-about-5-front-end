@@ -15,7 +15,6 @@ import {
 import TaskCard from '../components/TaskCard'
 
 const Home = ({ user, profile }) => {
-  //Game start search
 
   let active = 'active'
   let coordinates = []

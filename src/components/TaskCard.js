@@ -17,26 +17,12 @@ const TaskCard = (props) => {
     taskId: props.profile.id,
     completed: checked
   })
-  // const [location, setLocation] = useState({
-  //   name: '',
-  //   url: '',
-  //   gps: {},
-  //   category: '',
-  //   taskId: ''
-  // })
-  // const [complete, setComplete] = useState(false)
 
   const handleChange = (e) => {
     setChecked(!checked)
   }
-  
-  // useEffect(() => {
-  //   getLocation(props.locationId)
-  // }, [])
+
   useEffect(() => {
-    // if (checked === true && !activityData.locationId) {
-    //   convertToBackend()
-    // }
     if (activityData.locationId) {
       CreateActivity(activityData)
     }
@@ -53,19 +39,6 @@ const TaskCard = (props) => {
     temp.completed = true
     setActivityData(temp)
   }
-
-  // const convertToBackend = () => {
-  //   let temp = {
-  //     name: props.name,
-  //     url: props.url,
-  //     category: props.category,
-  //     gps: { lat: props.lat, lon: props.lon },
-  //     taskId: 1
-  //   }
-
-  //   // CreateALocation(temp)
-  //   DeleteLocation(props.id)
-  // }
 
   const CreateActivity = async (data) => {
     const res = await pushToActivity(data)
