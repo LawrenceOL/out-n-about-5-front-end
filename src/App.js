@@ -35,7 +35,6 @@ const App = () => {
   }
 
   const checkToken = async () => {
-    console.log('check token is called')
     //If a token exists, sends token to localStorage to persist logged in user
     const user = await CheckSession()
 
@@ -48,7 +47,6 @@ const App = () => {
     const token = localStorage.getItem('token')
     // Check if token exists before requesting to validate the token
     if (token) {
-      console.log('token valided')
       checkToken()
     }
   }, [])

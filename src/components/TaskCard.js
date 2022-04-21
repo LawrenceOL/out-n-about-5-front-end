@@ -47,7 +47,6 @@ const TaskCard = (props) => {
 
   const CreateALocation = async (data) => {
     const res = await CreateLocation(data)
-    console.log(res)
     setLocation(res.data)
     let temp = { ...activityData }
     temp.locationId = res.data.id
@@ -71,24 +70,6 @@ const TaskCard = (props) => {
   const CreateActivity = async (data) => {
     const res = await pushToActivity(data)
   }
-  // const getLocation = async (id) => {
-  //   const location = await GetLocation(id)
-  //   setLocation(location)
-  // }
-
-  // const updateActivity = async (id, data) => {
-  //   const res = await UpdateActivity(id, data)
-  //   console.log(res)
-  // }
-  // const getTask = () => {}
-  // const getUser = () => {}
-  // const getCompleted = async (id) => {
-  //   const activity = await GetOneActivity(id)
-  //   console.log(activity)
-  //   setComplete(activity)
-  // }
-  // console.log(checked)
-  // console.log(location.gps.lat)
 
   return (
     <div className="card">
