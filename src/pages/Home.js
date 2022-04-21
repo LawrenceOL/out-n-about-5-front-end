@@ -115,7 +115,7 @@ const Home = ({ user, profile }) => {
     data.forEach((element, index) => {
       if (index < 5) {
         let temp = {
-          name: element.tags.name,
+          name: element.name,
           url: `https://www.openstreetmap.org/node/${element.id}`,
           category: categoryKey + ': ' + categoryValue,
           gps: { lat: element.lat, lon: element.lon },
@@ -177,19 +177,20 @@ const Home = ({ user, profile }) => {
           {fiveLocations.length > 0 &&
             fiveLocations.map((selectedLocations) => (
               <div>
-                <p key={selectedLocations.id}>{selectedLocations.tags.name}</p>
+                <p key={selectedLocations.id}>{selectedLocations.name}</p>
                 <TaskCard
                   {...selectedLocations}
                   categoryKey={categoryKey}
                   categoryValue={categoryValue}
                   profile={profile}
-                  name={selectedLocations.tags.name}
-                  category={selectedLocations.tags.leisure}
+                  name={selectedLocations.name}
+                  category={selectedLocations.leisure}
                 />
               </div>
             ))}
         </div>
       )}
+      <div className='card-pack'>
       {activities &&
         activities.map((act, index) => (
           <div>
@@ -207,6 +208,7 @@ const Home = ({ user, profile }) => {
             )}
           </div>
         ))}
+        </div>
     </div>
   )
 }

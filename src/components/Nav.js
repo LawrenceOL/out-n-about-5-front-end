@@ -15,11 +15,6 @@ const Nav = ({ authenticated, user, profile, handleLogOut }) => {
           Sign Out
         </Link>
 
-        {/* ADDED ITEM */}
-        <Link className="nav-link" to="/activities">CardList</Link>
-        {/* END OF ADDED ITEM */}
-
-        
       </nav>
     )
   }
