@@ -378,7 +378,37 @@ cursor: pointer;
   width: 200px;
 }
 .profile-button:hover {
-  transform: translate(1px, 1px);
+  font-family: 'Jost', sans-serif;
+  background: linear-gradient(to bottom right, #25b542 20%, #1c93ff);
+  border-radius: 8px;
+  border: none;
+  padding: 5px 20px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  height: 40px;
+  margin: 5px 5px;
+  width: 200px;
+}
+.delete-hiding {
+  display: none;
+}
+.delete-showing {
+  font-family: 'Jost', sans-serif;
+  border-radius: 8px;
+  border: none;
+  padding: 5px 20px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  height: 40px;
+  margin: 5px 5px;
+  width: 200px;
+  background-color: red;
 }
 /* Card */
 .card {

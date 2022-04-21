@@ -151,24 +151,9 @@ const Home = ({ user, profile }) => {
       {!locationsFound && profile.id && !activities.length>0 && (
           <button className='profile-button' onClick={(e) => getLocation()}>Start the Game!</button>
       )}
-      {/* {<button className='profile-button' onClick={() => createTask(user.id)}>Create Task</button>} */}
       {locationsFound && (
         <div>
           <div className='card-pack'>
-          {/* {fiveLocations.length > 0 &&
-            fiveLocations.map((selectedLocations) => (
-              <div>
-                <p key={selectedLocations.id}>{selectedLocations.tags.name}</p>
-                <TaskCard
-                  {...selectedLocations}
-                  categoryKey={categoryKey}
-                  categoryValue={categoryValue}
-                  profile={profile}
-                  name={selectedLocations.tags.name}
-                  category={selectedLocations.tags.leisure}
-                />
-              </div>
-            ))} */}
             </div>
         </div>
       )}

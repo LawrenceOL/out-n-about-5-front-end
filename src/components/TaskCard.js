@@ -5,7 +5,8 @@ import {
   UpdateActivity,
   CreateLocation,
   pushToActivity,
-  DeleteLocation
+  DeleteLocation,
+  UpdateProfile
 } from '../services/UserServices'
 
 const TaskCard = (props) => {
@@ -28,8 +29,15 @@ const TaskCard = (props) => {
     }
     if (checked === true) {
       DeleteLocation(props.id)
+      let temp = {...props.profile}
+      temp.score++
+      UpdateProfile(props.profile.id,temp)
     }
   }, [checked])
+
+  const updateProfile = async (id,data) => {
+    await UpdateProfile(id,data)
+  }
 
   const CreateALocation = async (data) => {
     const res = await CreateLocation(data)
@@ -72,10 +80,7 @@ const TaskCard = (props) => {
       </div>
 
       <p>Lat: {props.lat}</p>
-      <p>Lat: {props.lon}</p>
-
-      {/* <p>locationId:{location.id}</p>
-      <p>activityId:{props.activityId}</p> */}
+      <p>Lon: {props.lon}</p>
       <a
         className="map-link"
         href={props.url}
