@@ -79,7 +79,7 @@ const App = () => {
               />
             }
           />
-          {/* {user.id && */}
+          {profile.id &&
           <Route
             path="/activity/:id"
             element={
@@ -90,7 +90,7 @@ const App = () => {
               />
             }
           />
-          {/* } */}
+          }
           <Route
             path="/profile/:id"
             element={
