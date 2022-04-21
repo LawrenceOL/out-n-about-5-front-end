@@ -104,14 +104,6 @@ const App = () => {
             }
           />
 
-          {/* NEW PAGE */}
-          <Route
-          path='/activities'
-          element={<Activities
-          />}/>
-          {/* END OF NEW PAGE */}
-
-
         </Routes>
       </main>
     </div>
