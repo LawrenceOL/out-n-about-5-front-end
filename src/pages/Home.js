@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { letterSpacing } from '@mui/system'
 import {
@@ -28,6 +28,7 @@ const Home = ({ user, profile }) => {
   const [completed, setCompleted] = useState({})
   const [activities, setActivities] = useState([])
   const [taskLocation, setTaskLocation] = useState([])
+  const { id } = useParams()
 
   const getLocations = async (e) => {
     const response = await axios.post(
@@ -42,10 +43,10 @@ const Home = ({ user, profile }) => {
 
   useEffect(() => {
     setFiveLocations(chooseFive())
-    if (user) {
-      getUserTask(profile.id)
-      getUserActivity(profile.id)
-      getUserTaskActivity(profile.id)
+    if (profile) {
+      getUserTask(id)
+      getUserActivity(id)
+      getUserTaskActivity(id)
     }
   }, [locations])
 
@@ -156,7 +157,7 @@ const Home = ({ user, profile }) => {
     const res = await CreateTask(id)
   }
   console.log(taskLocation)
-  console.log(activities)
+  console.log('card',activities)
   console.log(locations)
   let navigate = useNavigate()
 
@@ -164,15 +165,14 @@ const Home = ({ user, profile }) => {
   return (
     <div className="home-page">
       <h1>OUT AND ABOUT <span className='larger'>5</span></h1>
-      {!locationsFound && profile.id &&(
+      {!locationsFound && profile.id && !activities.length>0 && (
           <button className='profile-button' onClick={(e) => getLocation()}>Start the Game!</button>
       )}
       {/* {<button className='profile-button' onClick={() => createTask(user.id)}>Create Task</button>} */}
       {locationsFound && (
         <div>
-          <p>"We found activities: "</p>
           <div className='card-pack'>
-          {fiveLocations.length > 0 &&
+          {/* {fiveLocations.length > 0 &&
             fiveLocations.map((selectedLocations) => (
               <div>
                 <p key={selectedLocations.id}>{selectedLocations.tags.name}</p>
@@ -185,7 +185,7 @@ const Home = ({ user, profile }) => {
                   category={selectedLocations.tags.leisure}
                 />
               </div>
-            ))}
+            ))} */}
             </div>
         </div>
       )}
