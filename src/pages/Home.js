@@ -27,7 +27,7 @@ const Home = ({ user, profile, setProfile }) => {
     { amenity: 'cafe' },
     { amenity: 'fast_food' },
     { leisure: 'park' },
-    { natural: 'rock' },
+    { natural: 'stone' },
     { leisure: 'nature_reserve'},
   ]
   const [locations, setLocations] = useState([])
@@ -182,9 +182,9 @@ const Home = ({ user, profile, setProfile }) => {
         OUT AND ABOUT <span className="larger">5</span>
       </h1>
       {fiveLocations.length===0 && locationsFound &&(
-        <div>
-        <h2>Sorry, we could not find any locations. Try going to a new location or a using a different category.</h2>
-        <button onClick={() => {setLocationsFound(false)}}>Try Again</button>
+        <div className='sorry'>
+        <h2>Sorry, we could not find any activities. Try going to a new location or a using a different category.</h2>
+        <button className='sorry-button' onClick={() => {setLocationsFound(false)}}>Try Again</button>
         </div>
       )}
       {!locationsFound && profile.id && !activities.length > 0 && (
