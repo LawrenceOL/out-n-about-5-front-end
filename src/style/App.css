@@ -592,3 +592,6 @@ h1 {
 .sorry-button:hover {
   transform: translate(1px, 1px);
 }
+.main {
+  margin-bottom: -15px;
+}

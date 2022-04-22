@@ -29,6 +29,10 @@ const SignIn = (props) => {
   }
 
   return (
+    <div>
+      <h1 className='main'>
+        OUT AND ABOUT <span className="larger">5</span>
+      </h1>
     <div className="signin-page">
       <div className="signin-wrapper">
         <form className="login-form" onSubmit={handleSubmit}>
@@ -80,6 +84,7 @@ const SignIn = (props) => {
           onClose={() => setShow(false)}
         />
       </div>
+    </div>
     </div>
   )
 }
