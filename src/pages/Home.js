@@ -17,7 +17,7 @@ import TaskCard from '../components/TaskCard'
 import loader from '../assets/loading-loader.gif'
 
 
-const Home = ({ user, profile }) => {
+const Home = ({ user, profile, setProfile }) => {
   let active = "active";
   let coordinates = [];
   let selectedLocations = [];
@@ -28,6 +28,7 @@ const Home = ({ user, profile }) => {
     { amenity: 'fast_food' },
     { leisure: 'park' },
     { natural: 'rock' },
+    { leisure: 'nature_reserve'},
   ]
   const [locations, setLocations] = useState([])
   const [fiveLocations, setFiveLocations] = useState([])
@@ -62,6 +63,9 @@ const Home = ({ user, profile }) => {
       getUserTaskActivity(id);
     }
       setLoaderDisplay('none')
+      return function cleanup(){
+        setRefresh(true)
+      }
   }, [locations, refresh, profile, locationsFound])
 
 
@@ -213,6 +217,7 @@ const Home = ({ user, profile }) => {
             {index < 5 && (
               <TaskCard
                 profile={profile}
+                setProfile={setProfile}
                 name={act.name}
                 lat={act.gps.lat}
                 lon={act.gps.lon}
