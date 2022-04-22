@@ -439,15 +439,20 @@ nav {
 .card {
   min-width: 200px;
   width: 200px;
-  height: 400px;
+  height: 385px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 5px;
   margin: 15px;
 }
+.make-title {
+  margin: -5px 0px 10px 0px;
+  font-family: "Jost", sans-serif;
+  text-transform: capitalize;
+}
+
 .card-b {
-  margin: 2px;
-  padding: 2px;
+  margin: 4px 0px;
 }
 .card-image {
   width: 100%;
@@ -461,7 +466,7 @@ nav {
 .card-name {
   word-break: break-word;
   white-space: pre-wrap;
-  font-size: 20px;
+  max-inline-size: 200px;
   padding: 0px 10px;
   margin: 0px 5px 0px 5px;
 }
@@ -480,7 +485,12 @@ nav {
   padding: 0px;
   vertical-align: middle;
 }
-
+.latlon {
+  color: grey;
+  font-size: 12px;
+  margin: 2px 0 2px 0;
+  font-style: italic;
+}
 .card-cat {
   font-size: 14px;
   padding: -20px 10px -20px 10px;
@@ -519,10 +529,37 @@ h1 {
 .home-page {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
-
+.activity-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 #map {
-  height: 150px;
-  width: 150px;
+  width: 200px;
+  height: 200px;
+  font-size: 9.92px;
+  margin: 0 0 4px 0; 
+}
+
+.random-cat {
+  font-family: "Jost", sans-serif;
+  background: linear-gradient(to bottom right, #25b542 20%, #1c93ff);
+  border-radius: 8px;
+  border: none;
+  padding: 1.5px 20px;
+  box-sizing: content-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  height: 20px;
+  margin: 5px 5px;
+  width: 130px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
