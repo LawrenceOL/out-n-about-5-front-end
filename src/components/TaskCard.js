@@ -55,11 +55,25 @@ const TaskCard = (props) => {
 
   return (
     <div className="card">
-      <img
+      {/* <img
         className="card-image"
         src="https://cdn.pixabay.com/photo/2017/05/09/03/46/alberta-2297204__340.jpg"
         alt="location"
-      />
+      /> */}
+
+      <MapContainer
+        className="card-image"
+        center={[props.lat, props.lon]}
+        zoom={10}
+        id="map"
+        zoomControl={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[`${props.lat}`, `${props.lon}`]}></Marker>
+      </MapContainer>
       <div className="card-container">
         {props.name && <h4 className="card-name">{props.name}</h4>}
 
@@ -85,18 +99,6 @@ const TaskCard = (props) => {
       <a className="map-link" href={props.url}>
         Link to Map
       </a>
-      <MapContainer
-        center={[51.5072, 0.1276]}
-        zoom={10}
-        id="map"
-        zoomControl={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={[`${props.lat}`, `${props.lon}`]}></Marker>
-      </MapContainer>
     </div>
   );
 };
