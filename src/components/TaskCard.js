@@ -29,10 +29,16 @@ const TaskCard = (props) => {
       CreateActivity(activityData);
     }
     if (checked === true) {
-      DeleteLocation(props.id);
-      let temp = { ...props.profile };
-      temp.score++;
-      UpdateProfile(props.profile.id, temp);
+
+      DeleteLocation(props.id)
+      let temp = {...props.profile}
+      temp.score++
+      UpdateProfile(props.profile.id,temp)
+      props.setRefresh(!props.refresh)
+    }
+    return function cleanup() {
+      setChecked(false)
+
     }
   }, [checked]);
 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Profiler, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import RegisterModal from '../components/RegisterModal'
 import { SignInUser } from '../services/Auth'
@@ -17,11 +17,15 @@ const SignIn = (props) => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
+    try {
     const payload = await SignInUser(formValuer)
     setFormValuer({ username: '', password: '' })
     props.setUser(payload)
     props.toggleAuthenticated(true)
     navigate(`/profile/${payload.user.id}`)
+    } catch {
+      alert('Incorrect username/password combination. Please try again')
+    }
   }
 
   return (

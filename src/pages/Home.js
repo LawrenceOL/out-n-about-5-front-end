@@ -10,27 +10,34 @@ import {
   GetProfile,
   CreateTask,
   GetUserTaskActivity,
-  UpdateLocation,
-} from "../services/UserServices";
-import TaskCard from "../components/TaskCard";
+
+  UpdateLocation
+} from '../services/UserServices'
+import TaskCard from '../components/TaskCard'
+import loader from '../assets/loading-loader.gif'
+
 
 const Home = ({ user, profile }) => {
   let active = "active";
   let coordinates = [];
   let selectedLocations = [];
   let categories = [
-    { amenity: "restaurant" },
-    { amenity: "cafe" },
-    { amenity: "fast_food" },
-  ];
-  const [locations, setLocations] = useState([]);
-  const [fiveLocations, setFiveLocations] = useState([]);
-  const [locationsFound, setLocationsFound] = useState(false);
-  const [completed, setCompleted] = useState({});
-  const [activities, setActivities] = useState([]);
-  const [taskLocation, setTaskLocation] = useState([]);
-  const [category, setCategory] = useState(["amenity", "restaurant"]);
-  const { id } = useParams();
+
+    { amenity: 'restaurant' },
+    { amenity: 'cafe' },
+    { amenity: 'fast_food' },
+  ]
+  const [locations, setLocations] = useState([])
+  const [fiveLocations, setFiveLocations] = useState([])
+  const [locationsFound, setLocationsFound] = useState(false)
+  const [completed, setCompleted] = useState({})
+  const [activities, setActivities] = useState([])
+  const [taskLocation, setTaskLocation] = useState([])
+  const [category, setCategory] = useState(['amenity', 'restaurant'])
+  const [refresh, setRefresh] = useState(true)
+  const [loaderDisplay, setLoaderDisplay] = useState('none')
+  const { id } = useParams()
+
 
   const getLocations = async (e) => {
     const response = await axios.post(
@@ -38,10 +45,11 @@ const Home = ({ user, profile }) => {
       `[out:json];node(around:8000.00,${coordinates[0]}, ${coordinates[1]})[${category[0]}=${category[1]}];
         out body;
         `
-    );
-    setLocations(response.data.elements);
-    setLocationsFound(true);
-  };
+
+    )
+    setLocations(response.data.elements)
+    setLocationsFound(true)
+}
 
   useEffect(() => {
     setFiveLocations(chooseFive());
@@ -50,9 +58,13 @@ const Home = ({ user, profile }) => {
       getUserActivity(id);
       getUserTaskActivity(id);
     }
-  }, [locations]);
+
+      setLoaderDisplay('none')
+  }, [locations, refresh, profile])
+
 
   function getLocation() {
+    setLoaderDisplay('block')
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -166,41 +178,46 @@ const Home = ({ user, profile }) => {
       </h1>
       {!locationsFound && profile.id && !activities.length > 0 && (
         <div>
-          <button onClick={() => handleCategory(categories)}>
-            Random category
-          </button>
-          <p>
-            {category[0]}: {category[1]}
-          </p>
-          <button className="profile-button" onClick={(e) => getLocation()}>
-            Start the Game!
-          </button>
-        </div>
-      )}
+
+        <button onClick={() => handleCategory(categories)}>
+          Random category
+        </button>
+        <p>
+          {category[0]}: {category[1]}
+        </p>
+          <button className='profile-button' onClick={(e) => getLocation()}>Start the Game!</button>
+          <br></br>
+          <img src={loader} alt='loader' style={{width: '200px', display: loaderDisplay}}/>
+      </div>)}
+
       {locationsFound && (
         <div>
           <div className="card-pack"></div>
         </div>
       )}
-      <div className="card-pack">
-        {activities &&
-          activities.map((act, index) => (
-            <div>
-              {index < 5 && (
-                <TaskCard
-                  profile={profile}
-                  name={act.name}
-                  lat={act.gps.lat}
-                  lon={act.gps.lon}
-                  {...act}
-                  leisure={act.category}
-                  completed={false}
-                  active={active}
-                />
-              )}
-            </div>
-          ))}
-      </div>
+
+      <div className='card-pack'>
+      {activities &&
+        activities.map((act, index) => (
+          <div>
+            {index < 5 && (
+              <TaskCard
+                profile={profile}
+                name={act.name}
+                lat={act.gps.lat}
+                lon={act.gps.lon}
+                {...act}
+                leisure={act.category}
+                completed={false}
+                active={active}
+                setRefresh={setRefresh}
+                refresh={refresh}
+              />
+            )}
+          </div>
+        ))}
+        </div>
+
     </div>
   );
 };

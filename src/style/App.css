@@ -80,7 +80,7 @@ body {
   border: transparent;
   font-weight: bold;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   width: 150px;
 }
 .open-modal:hover {
@@ -409,6 +409,7 @@ nav {
   height: 40px;
   margin: 5px 5px;
   width: 200px;
+  transform:translate(1px, 1px);
 }
 .delete-hiding {
   display: none;
