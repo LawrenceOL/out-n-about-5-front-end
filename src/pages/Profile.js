@@ -57,6 +57,7 @@ const Profile = ({ user, profile, getProfile, setProfile, handleLogOut}) => {
     }
     
   return (
+    <div className='delete-wrapper'>
     <div className="profile-page">
       <div className="initial-box">
         <p className="initials">
@@ -131,7 +132,7 @@ const Profile = ({ user, profile, getProfile, setProfile, handleLogOut}) => {
             id="score"
             name="score"
             value={profile.score}
-            readOnly={formStatus}
+            readOnly
           />
         </label>
         <button className="profile-button" onClick={enableUpdate}>
@@ -139,8 +140,9 @@ const Profile = ({ user, profile, getProfile, setProfile, handleLogOut}) => {
         </button>
       </form>
       <div>
+      </div>
+      </div>
       <button className={deleteBtn} id='delete' name='delete' onClick={handleDelete}>Delete User</button>
-    </div>
     </div>
   )
 }

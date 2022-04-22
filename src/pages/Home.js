@@ -19,26 +19,32 @@ const Home = ({ user, profile }) => {
   let active = 'active'
   let coordinates = []
   let selectedLocations = []
-  let categoryKey = 'leisure'
-  let categoryValue = 'park'
+  let categories = [
+    { amenity: 'restaurant' },
+    { amenity: 'cafe' },
+    { amenity: 'fast_food' },
+  ]
   const [locations, setLocations] = useState([])
   const [fiveLocations, setFiveLocations] = useState([])
   const [locationsFound, setLocationsFound] = useState(false)
   const [completed, setCompleted] = useState({})
   const [activities, setActivities] = useState([])
   const [taskLocation, setTaskLocation] = useState([])
+  const [category, setCategory] = useState(['amenity', 'restaurant'])
   const { id } = useParams()
 
   const getLocations = async (e) => {
+    if(!category[0]==='monkey') {
     const response = await axios.post(
       `https://overpass-api.de/api/interpreter?data=`,
-      `[out:json];node(around:8000.00,${coordinates[0]}, ${coordinates[1]})[${categoryKey}=${categoryValue}];
+      `[out:json];node(around:8000.00,${coordinates[0]}, ${coordinates[1]})[${category[0]}=${category[1]}];
         out body;
         `
     )
     setLocations(response.data.elements)
     setLocationsFound(true)
   }
+}
 
   useEffect(() => {
     setFiveLocations(chooseFive())
@@ -103,7 +109,7 @@ const Home = ({ user, profile }) => {
         let temp = {
           name: element.tags.name,
           url: `https://www.openstreetmap.org/node/${element.id}`,
-          category: categoryKey + ': ' + categoryValue,
+          category: category[0] + ': ' + category[1],
           gps: { lat: element.lat, lon: element.lon },
           taskId: profile.id
 
@@ -145,12 +151,31 @@ const Home = ({ user, profile }) => {
   }
   let navigate = useNavigate()
 
+  const handleCategory = (arr) => {
+    let len = arr.length
+    let index = Math.floor(Math.random() * len)
+    let temp = ''
+    let temp2 = ''
+    temp = Object.keys(arr[index])[0]
+    temp2 = Object.values(arr[index])[0]
+    let temp3 = [temp, temp2]
+    setCategory(temp3)
+    console.log(category)
+  }
+
   return (
     <div className="home-page">
       <h1>OUT AND ABOUT <span className='larger'>5</span></h1>
       {!locationsFound && profile.id && !activities.length>0 && (
+        <div>
+        <button onClick={() => handleCategory(categories)}>
+          Random category
+        </button>
+        <p>
+          {category[0]}: {category[1]}
+        </p>
           <button className='profile-button' onClick={(e) => getLocation()}>Start the Game!</button>
-      )}
+      </div>)}
       {locationsFound && (
         <div>
           <div className='card-pack'>
