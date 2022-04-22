@@ -45,6 +45,7 @@
 - Git
   - Github
 - Leaflet
+  - React Leaflet   
 - OpenOpenStreetMap Overpass API
 
 
@@ -60,6 +61,10 @@
 ### **_Credits:_**
 
 #### [Photo by Aksonsat Uanthoeng](https://www.pexels.com/photo/close-up-photo-of-assorted-color-of-push-pins-on-map-1078850/)
+#### [Open Street Map](https://www.openstreetmap.org/#map=18/41.78900/-69.98693&layers=N)
+#### [Overpass API](http://overpass-api.de/)
+#### [Leaflet](https://leafletjs.com/)
+#### [React Leaflet](https://react-leaflet.js.org/)
 
 
 
