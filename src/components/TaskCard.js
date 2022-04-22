@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 import {
   GetLocation,
   GetOneActivity,
@@ -6,28 +6,30 @@ import {
   CreateLocation,
   pushToActivity,
   DeleteLocation,
-  UpdateProfile
-} from '../services/UserServices'
+  UpdateProfile,
+} from "../services/UserServices";
+import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 
 const TaskCard = (props) => {
-  const [checked, setChecked] = useState(false)
-  const [location, setLocation] = useState('')
+  const [checked, setChecked] = useState(false);
+  const [location, setLocation] = useState("");
   const [activityData, setActivityData] = useState({
-    locationId: '',
+    locationId: "",
     userId: props.profile.id,
     taskId: props.profile.id,
-    completed: checked
-  })
+    completed: checked,
+  });
 
   const handleChange = (e) => {
-    setChecked(!checked)
-  }
+    setChecked(!checked);
+  };
 
   useEffect(() => {
     if (activityData.locationId) {
-      CreateActivity(activityData)
+      CreateActivity(activityData);
     }
     if (checked === true) {
+
       DeleteLocation(props.id)
       let temp = {...props.profile}
       temp.score++
@@ -36,33 +38,47 @@ const TaskCard = (props) => {
     }
     return function cleanup() {
       setChecked(false)
-    }
-  }, [checked])
 
-  const updateProfile = async (id,data) => {
-    await UpdateProfile(id,data)
-  }
+    }
+  }, [checked]);
+
+  const updateProfile = async (id, data) => {
+    await UpdateProfile(id, data);
+  };
 
   const CreateALocation = async (data) => {
-    const res = await CreateLocation(data)
-    setLocation(res.data)
-    let temp = { ...activityData }
-    temp.locationId = res.data.id
-    temp.completed = true
-    setActivityData(temp)
-  }
+    const res = await CreateLocation(data);
+    setLocation(res.data);
+    let temp = { ...activityData };
+    temp.locationId = res.data.id;
+    temp.completed = true;
+    setActivityData(temp);
+  };
 
   const CreateActivity = async (data) => {
-    const res = await pushToActivity(data)
-  }
+    const res = await pushToActivity(data);
+  };
 
   return (
     <div className="card">
-      <img
+      {/* <img
         className="card-image"
         src="https://cdn.pixabay.com/photo/2017/05/09/03/46/alberta-2297204__340.jpg"
         alt="location"
-      />
+      /> */}
+
+      <MapContainer
+        center={[props.lat, props.lon]}
+        zoom={10}
+        id="map"
+        zoomControl={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[`${props.lat}`, `${props.lon}`]}></Marker>
+      </MapContainer>
       <div className="card-container">
         {props.name && <h4 className="card-name">{props.name}</h4>}
 
@@ -85,14 +101,11 @@ const TaskCard = (props) => {
 
       <p>Lat: {props.lat}</p>
       <p>Lon: {props.lon}</p>
-      <a
-        className="map-link"
-        href={props.url}
-      >
+      <a className="map-link" href={props.url}>
         Link to Map
       </a>
     </div>
-  )
-}
+  );
+};
 
-export default TaskCard
+export default TaskCard;

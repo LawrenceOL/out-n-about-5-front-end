@@ -1,10 +1,10 @@
 .App-link {
   color: #1ca651;
 }
-body{
+body {
   background: rgb(235, 245, 237);
   background-size: contain;
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   box-sizing: border-box;
 }
 /* SIGN UP PAGE */
@@ -26,7 +26,7 @@ body{
   text-align: center;
 }
 .login-form {
-  background-image:linear-gradient(to bottom right, #25b542 20%, #1c93ff);
+  background-image: linear-gradient(to bottom right, #25b542 20%, #1c93ff);
   border-top-right-radius: 0px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -50,33 +50,33 @@ body{
 }
 .register-title {
   font-size: 40px;
-  margin:0px;
+  margin: 0px;
 }
 .signin-button {
-    width: 150px;
-    font-size: 14px;
-    padding: .5rem 3rem;
-    border: solid 2.5px #eee;
-    background: transparent;
-    background-origin: border-box;    
-    margin: 5px auto;
-    color:white;
+  width: 150px;
+  font-size: 14px;
+  padding: 0.5rem 3rem;
+  border: solid 2.5px #eee;
+  background: transparent;
+  background-origin: border-box;
+  margin: 5px auto;
+  color: white;
 }
-  .signin-button:hover {
-    box-shadow: none;
-    color: #eee;
-    background:transparent;
-    transform:translate(1px,1px);
-  }
-  .signin-title {
-    font-size: 50px;
-  }
+.signin-button:hover {
+  box-shadow: none;
+  color: #eee;
+  background: transparent;
+  transform: translate(1px, 1px);
+}
+.signin-title {
+  font-size: 50px;
+}
 /* REGISTRATION MODAL STYLING */
 .open-modal {
-  background-image:linear-gradient(to bottom right, #25b542 20%, #1c93ff);
+  background-image: linear-gradient(to bottom right, #25b542 20%, #1c93ff);
   padding: 10px 20px;
   font-size: 20px;
-  color:eee;
+  color: eee;
   border: transparent;
   font-weight: bold;
   border-radius: 5px;
@@ -84,7 +84,7 @@ body{
   width: 150px;
 }
 .open-modal:hover {
-  transform:translate(1px, 1px);
+  transform: translate(1px, 1px);
 }
 
 /* Container for modal outside and transparent background during it */
@@ -94,7 +94,7 @@ body{
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,17 +106,20 @@ body{
   width: 500px;
   background: linear-gradient(to bottom right, #25b542 20%, #1c93ff);
   border-radius: 20px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   color: white;
 }
-.modal-header, .modal-footer {
+.modal-header,
+.modal-footer {
   padding: 10px;
 }
 .modal-title {
   margin: 0;
   font-size: 40px;
   text-align: center;
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
 }
 .modal-body {
   padding: 0px 20px;
@@ -131,7 +134,7 @@ body{
   margin-top: 5px;
   margin-bottom: -15px;
   display: block;
-  background:transparent;
+  background: transparent;
   border: none;
   font-size: 30px;
   color: white;
@@ -151,22 +154,22 @@ body{
   position: relative;
   display: inline-block;
   overflow: hidden;
-  transition: .5s;
+  transition: 0.5s;
   margin-bottom: 15px;
 }
 .form-submit {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
   padding: 10px 30px;
   color: white;
   border: none;
   font-size: 16px;
   text-decoration: none;
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   font-weight: bold;
   letter-spacing: 1px;
 }
 a:hover {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   background: rgba(255, 255, 255, 0.3);
 }
 a span {
@@ -185,7 +188,8 @@ a span:nth-child(1) {
   0% {
     left: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     left: 100%;
   }
 }
@@ -196,13 +200,14 @@ a span:nth-child(2) {
   height: 100%;
   background: linear-gradient(180deg, transparent, white);
   animation: btn-anim2 1s linear infinite;
-  animation-delay: .25s
+  animation-delay: 0.25s;
 }
 @keyframes btn-anim2 {
   0% {
     top: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     top: 100%;
   }
 }
@@ -213,13 +218,14 @@ a span:nth-child(3) {
   height: 2px;
   background: linear-gradient(270deg, transparent, white);
   animation: btn-anim3 1s linear infinite;
-  animation-delay: .5s
+  animation-delay: 0.5s;
 }
 @keyframes btn-anim3 {
   0% {
     right: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     right: 100%;
   }
 }
@@ -230,30 +236,31 @@ a span:nth-child(4) {
   height: 100%;
   background: linear-gradient(360deg, transparent, white);
   animation: btn-anim4 1s linear infinite;
-  animation-delay: .75s
+  animation-delay: 0.75s;
 }
 @keyframes btn-anim4 {
   0% {
     bottom: -100%;
   }
-  50%,100% {
+  50%,
+  100% {
     bottom: 100%;
   }
 }
 /* ----------------------- */
 
 /* Input Box for Registration Form */
-.reg-box{
-	width: 70%;
-	height: 20px;
-	background: #eee;
-	justify-content: center;
-	display: flex;
-	margin: 20px auto;
-	padding: 10px;
-	border: none;
-	outline: none;
-	border-radius: 5px;
+.reg-box {
+  width: 70%;
+  height: 20px;
+  background: #eee;
+  justify-content: center;
+  display: flex;
+  margin: 20px auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
 }
 /* -------------------- */
 /* REGISTRATION MODAL - END */
@@ -266,20 +273,20 @@ nav {
   height: 40px;
 }
 .navBar .nav-link {
-color: #f2f2f2;
-padding: 10px 16px;
-text-decoration: none;
-font-weight: bold;
-font-size: 17px;
-width: 80px;
-text-align: center;
-border-radius:5px;
-margin:0px 10px;
+  color: #f2f2f2;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 17px;
+  width: 80px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0px 10px;
 }
 .nav-link:hover {
-background-color: #24b450;
-transform: scale(1.2);
-cursor: pointer;
+  background-color: #24b450;
+  transform: scale(1.2);
+  cursor: pointer;
 }
 .signout:hover {
   background-color: rgb(201, 0, 0);
@@ -297,16 +304,17 @@ cursor: pointer;
   display: flex;
   flex-direction: column;
   width: 600px;
-  margin:5px auto;
+  margin: 5px auto;
   padding: 50px 0px;
   background: white;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 .initial-box {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -319,8 +327,8 @@ cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .initials {
-  font-family: 'Righteous', cursive;
-  color:white;
+  font-family: "Righteous", cursive;
+  color: white;
   font-size: 50px;
 }
 .profile-form {
@@ -335,13 +343,13 @@ cursor: pointer;
   margin: 8px 0px 8px 0px;
 }
 .profile-address {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   resize: none;
   width: 400px;
   margin: auto 0px;
   background-color: transparent;
   border: none;
-  font-size:18px;
+  font-size: 18px;
   font-weight: bold;
   text-align: center;
 }
@@ -353,47 +361,48 @@ cursor: pointer;
 }
 .profile-input {
   width: 400px;
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   margin: auto;
   background-color: transparent;
   border: none;
-  font-size:18px;
+  font-size: 18px;
   font-weight: bold;
   text-align: center;
-  
 }
 .profile-input-updating {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   margin: 0px 0px 0px 10px;
-  width:400px;
+  width: 400px;
   background: white;
   border: 1px solid black;
 }
 
 .profile-button {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   background: linear-gradient(to bottom right, #25b542 20%, #1c93ff);
   border-radius: 8px;
   border: none;
   padding: 5px 20px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
   height: 40px;
   margin: 5px 5px;
   width: 200px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 .profile-button:hover {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   background: linear-gradient(to bottom right, #25b542 20%, #1c93ff);
   border-radius: 8px;
   border: none;
   padding: 5px 20px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
@@ -407,12 +416,12 @@ cursor: pointer;
 }
 .delete-showing {
   text-align: center;
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   border-radius: 8px;
   border: none;
   padding: 5px 20px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
@@ -420,11 +429,15 @@ cursor: pointer;
   margin: 5px 5px;
   width: 200px;
   background-color: red;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 /* Card */
 .card {
-  min-width:200px;
+  min-width: 200px;
   width: 200px;
   height: 400px;
   background-color: white;
@@ -437,9 +450,9 @@ cursor: pointer;
   padding: 2px;
 }
 .card-image {
-   width: 100%;
-   border-top-left-radius: 5px;
-   border-top-right-radius: 5px;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .card-container {
   display: flex;
@@ -463,7 +476,7 @@ cursor: pointer;
 }
 .card-checkin {
   width: 15px;
-  height:15px;
+  height: 15px;
   padding: 0px;
   vertical-align: middle;
 }
@@ -486,7 +499,7 @@ cursor: pointer;
 
 h1 {
   text-align: center;
-  font-family: 'Righteous', cursive;
+  font-family: "Righteous", cursive;
 }
 
 .larger {
@@ -507,4 +520,9 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#map {
+  height: 150px;
+  width: 150px;
 }
