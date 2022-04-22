@@ -33,16 +33,14 @@ const Home = ({ user, profile }) => {
   const { id } = useParams();
 
   const getLocations = async (e) => {
-    if (!category[0] === "monkey") {
-      const response = await axios.post(
-        `https://overpass-api.de/api/interpreter?data=`,
-        `[out:json];node(around:8000.00,${coordinates[0]}, ${coordinates[1]})[${category[0]}=${category[1]}];
+    const response = await axios.post(
+      `https://overpass-api.de/api/interpreter?data=`,
+      `[out:json];node(around:8000.00,${coordinates[0]}, ${coordinates[1]})[${category[0]}=${category[1]}];
         out body;
         `
-      );
-      setLocations(response.data.elements);
-      setLocationsFound(true);
-    }
+    );
+    setLocations(response.data.elements);
+    setLocationsFound(true);
   };
 
   useEffect(() => {
