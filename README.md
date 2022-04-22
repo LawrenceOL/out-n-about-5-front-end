@@ -2,7 +2,7 @@
 
 ## Date: 4/22/2022
 
-### By: [Eric Lantz](https://www.linkedin.com/in/eric-lantz/) && [Huan Zeng](https://github.com/huan00) && [Lawrence O'Regan-Lloyd](https://www.linkedin.com/in/lawrenceol/)
+### By: [Eric Lantz](https://www.linkedin.com/in/eric-lantz/) && [Huan Zeng](https://www.linkedin.com/in/huan-zeng/) && [Lawrence O'Regan-Lloyd](https://www.linkedin.com/in/lawrenceol/)
 
 <img src='https://images.pexels.com/photos/1078850/pexels-photo-1078850.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' alt="map" width="400"/>
 
