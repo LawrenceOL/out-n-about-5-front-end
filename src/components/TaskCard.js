@@ -61,15 +61,9 @@ const TaskCard = (props) => {
 
   return (
     <div className="card">
-      {/* <img
-        className="card-image"
-        src="https://cdn.pixabay.com/photo/2017/05/09/03/46/alberta-2297204__340.jpg"
-        alt="location"
-      /> */}
-
       <MapContainer
         center={[props.lat, props.lon]}
-        zoom={10}
+        zoom={15}
         id="map"
         zoomControl={false}
       >
@@ -82,9 +76,9 @@ const TaskCard = (props) => {
       <div className="card-container">
         {props.name && <h4 className="card-name">{props.name}</h4>}
 
-        {props.category && <p className="card-des card-b">{props.category}</p>}
+        {props.category && <p className="card-des card-b make-title">{props.category.replaceAll('_',' ')}</p>}
         <form>
-          <label htmlFor="checkin">Check In:</label>
+          <label htmlFor="checkin">Check In: </label>
           {!props.completed === true && (
             <input
               className="card-checkin card-b"
@@ -99,8 +93,8 @@ const TaskCard = (props) => {
         </form>
       </div>
 
-      <p>Lat: {props.lat}</p>
-      <p>Lon: {props.lon}</p>
+      <p className='latlon'>Lat: {props.lat}</p>
+      <p className='latlon'>Lon: {props.lon}</p>
       <a className="map-link" href={props.url}>
         Link to Map
       </a>

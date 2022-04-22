@@ -26,6 +26,8 @@ const Home = ({ user, profile }) => {
     { amenity: 'restaurant' },
     { amenity: 'cafe' },
     { amenity: 'fast_food' },
+    { leisure: 'park' },
+    { natural: 'rock' },
   ]
   const [locations, setLocations] = useState([])
   const [fiveLocations, setFiveLocations] = useState([])
@@ -45,22 +47,22 @@ const Home = ({ user, profile }) => {
       `[out:json];node(around:8000.00,${coordinates[0]}, ${coordinates[1]})[${category[0]}=${category[1]}];
         out body;
         `
-
     )
     setLocations(response.data.elements)
     setLocationsFound(true)
 }
 
   useEffect(() => {
+    if (fiveLocations < 1) {
     setFiveLocations(chooseFive());
+    }
     if (profile) {
       getUserTask(id);
       getUserActivity(id);
       getUserTaskActivity(id);
     }
-
       setLoaderDisplay('none')
-  }, [locations, refresh, profile])
+  }, [locations, refresh, profile, locationsFound])
 
 
   function getLocation() {
@@ -168,7 +170,6 @@ const Home = ({ user, profile }) => {
     temp2 = Object.values(arr[index])[0];
     let temp3 = [temp, temp2];
     setCategory(temp3);
-    console.log(category);
   };
 
   return (
@@ -176,19 +177,28 @@ const Home = ({ user, profile }) => {
       <h1>
         OUT AND ABOUT <span className="larger">5</span>
       </h1>
+      {fiveLocations.length===0 && locationsFound &&(
+        <div>
+        <h2>Sorry, we could not find any locations. Try going to a new location or a using a different category.</h2>
+        <button onClick={() => {setLocationsFound(false)}}>Try Again</button>
+        </div>
+      )}
       {!locationsFound && profile.id && !activities.length > 0 && (
         <div>
-
-        <button onClick={() => handleCategory(categories)}>
-          Random category
+          <div className='activity-intro'>
+        <button className='random-cat' onClick={() => handleCategory(categories)}>
+          Random Category
         </button>
-        <p>
-          {category[0]}: {category[1]}
+        
+        <p className='make-title'>
+          {category[0]}: {category[1].replaceAll('_',' ')}
         </p>
           <button className='profile-button' onClick={(e) => getLocation()}>Start the Game!</button>
+          </div>
           <br></br>
           <img src={loader} alt='loader' style={{width: '200px', display: loaderDisplay}}/>
-      </div>)}
+      </div>
+      )}
 
       {locationsFound && (
         <div>
@@ -199,7 +209,7 @@ const Home = ({ user, profile }) => {
       <div className='card-pack'>
       {activities &&
         activities.map((act, index) => (
-          <div>
+          <div key={act.id}>
             {index < 5 && (
               <TaskCard
                 profile={profile}
@@ -217,7 +227,6 @@ const Home = ({ user, profile }) => {
           </div>
         ))}
         </div>
-
     </div>
   );
 };
