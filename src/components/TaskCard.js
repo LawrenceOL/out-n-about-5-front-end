@@ -62,7 +62,6 @@ const TaskCard = (props) => {
       /> */}
 
       <MapContainer
-        className="card-image"
         center={[props.lat, props.lon]}
         zoom={10}
         id="map"
