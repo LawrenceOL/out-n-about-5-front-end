@@ -11,8 +11,8 @@ import {
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
 
 const TaskCard = (props) => {
-  const [checked, setChecked] = useState(false);
   const [location, setLocation] = useState("");
+  const [checked, setChecked] = useState(false);
   const [activityData, setActivityData] = useState({
     locationId: "",
     userId: props.profile.id,
@@ -33,6 +33,7 @@ const TaskCard = (props) => {
       DeleteLocation(props.id)
       let temp = {...props.profile}
       temp.score++
+      props.setProfile(temp)
       UpdateProfile(props.profile.id,temp)
       props.setRefresh(!props.refresh)
     }

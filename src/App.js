@@ -81,6 +81,7 @@ const App = () => {
             element={
               <Home
                 user={user}
+                setProfile={setProfile}
                 profile={profile}
                 authenticated={authenticated}
               />
