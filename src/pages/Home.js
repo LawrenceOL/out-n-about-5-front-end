@@ -13,6 +13,7 @@ import {
   UpdateLocation
 } from '../services/UserServices'
 import TaskCard from '../components/TaskCard'
+import loader from '../assets/loading-loader.gif'
 
 const Home = ({ user, profile }) => {
 
@@ -31,10 +32,11 @@ const Home = ({ user, profile }) => {
   const [activities, setActivities] = useState([])
   const [taskLocation, setTaskLocation] = useState([])
   const [category, setCategory] = useState(['amenity', 'restaurant'])
+  const [refresh, setRefresh] = useState(true)
+  const [loaderDisplay, setLoaderDisplay] = useState('none')
   const { id } = useParams()
 
   const getLocations = async (e) => {
-    if(!category[0]==='monkey') {
     const response = await axios.post(
       `https://overpass-api.de/api/interpreter?data=`,
       `[out:json];node(around:8000.00,${coordinates[0]}, ${coordinates[1]})[${category[0]}=${category[1]}];
@@ -43,9 +45,7 @@ const Home = ({ user, profile }) => {
     )
     setLocations(response.data.elements)
     setLocationsFound(true)
-  }
 }
-
   useEffect(() => {
     setFiveLocations(chooseFive())
     if (profile) {
@@ -53,9 +53,11 @@ const Home = ({ user, profile }) => {
       getUserActivity(id)
       getUserTaskActivity(id)
     }
-  }, [locations])
+      setLoaderDisplay('none')
+  }, [locations, refresh, profile])
 
   function getLocation() {
+    setLoaderDisplay('block')
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition)
     } else {
@@ -175,6 +177,8 @@ const Home = ({ user, profile }) => {
           {category[0]}: {category[1]}
         </p>
           <button className='profile-button' onClick={(e) => getLocation()}>Start the Game!</button>
+          <br></br>
+          <img src={loader} alt='loader' style={{width: '200px', display: loaderDisplay}}/>
       </div>)}
       {locationsFound && (
         <div>
@@ -196,6 +200,8 @@ const Home = ({ user, profile }) => {
                 leisure={act.category}
                 completed={false}
                 active={active}
+                setRefresh={setRefresh}
+                refresh={refresh}
               />
             )}
           </div>

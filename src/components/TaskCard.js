@@ -32,6 +32,10 @@ const TaskCard = (props) => {
       let temp = {...props.profile}
       temp.score++
       UpdateProfile(props.profile.id,temp)
+      props.setRefresh(!props.refresh)
+    }
+    return function cleanup() {
+      setChecked(false)
     }
   }, [checked])
 

@@ -34,7 +34,8 @@ const RegisterModal = (props) => {
       location: ''
     })
     props.setShow(false)
-  }
+    alert(`Registration complete. Click 'Ok' to continue and sign in!`)
+  } 
 
   if (!props.show) {
     return null
