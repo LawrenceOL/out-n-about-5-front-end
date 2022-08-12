@@ -46,7 +46,7 @@
   - Github
 - Leaflet
   - React Leaflet   
-- OpenOpenStreetMap Overpass API
+- OpenStreetMap Overpass API
 
 
 ### **_Getting Started_**
