@@ -22,13 +22,13 @@
 ### **_Screenshots_**
 
 <img src='https://github.com/LawrenceOL/out-n-about-5-front-end/blob/main/src/assets/outnaboutsignin.PNG?raw=true'  alt="screenshot" width="600"/>
-#### **Login Screen**
+### **Login Screen**
 
 <img src='https://github.com/LawrenceOL/out-n-about-5-front-end/blob/main/src/assets/outnaboutactivities.PNG?raw=true'  alt="screenshot" width="600"/>
-#### **Gameplay**
+### **Gameplay**
 
 <img src='https://github.com/LawrenceOL/out-n-about-5-front-end/blob/main/src/assets/outnaboutstartgame.PNG?raw=true'  alt="screenshot" width="300"/>
-#### **Ready to play? Visit the Heroku Deployment**
+### **Ready to play? Visit the Heroku Deployment**
 
 
 
