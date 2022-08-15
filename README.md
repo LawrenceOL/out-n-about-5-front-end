@@ -15,19 +15,22 @@
 
 ### **_Description_**
 
-### Explore your world! Out n About 5 is a scavenger hunt game that challenges users to complete 5 tasks located at 5 new places within 5 miles of their location
+#### Explore your world! Out n About 5 is a scavenger hunt game that challenges users to complete 5 tasks located at 5 new places within 5 miles of their location
 
 ---
 
 ### **_Screenshots_**
 
 <img src='https://github.com/LawrenceOL/out-n-about-5-front-end/blob/main/src/assets/outnaboutsignin.PNG?raw=true'  alt="screenshot" width="600"/>
+
 ### **Login Screen**
 
 <img src='https://github.com/LawrenceOL/out-n-about-5-front-end/blob/main/src/assets/outnaboutactivities.PNG?raw=true'  alt="screenshot" width="600"/>
+
 ### **Gameplay**
 
 <img src='https://github.com/LawrenceOL/out-n-about-5-front-end/blob/main/src/assets/outnaboutstartgame.PNG?raw=true'  alt="screenshot" width="300"/>
+
 ### **Ready to play? Visit the Heroku Deployment**
 
 
