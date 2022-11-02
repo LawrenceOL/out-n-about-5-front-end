@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-export const BASE_URL = "http://10.0.0.247:3001/";
+export const BASE_URL = "https://out-n-about-5-back-end.herokuapp.com";
 
 const Client = Axios.create({ baseURL: BASE_URL });
 
